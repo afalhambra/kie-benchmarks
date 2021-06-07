@@ -20,25 +20,19 @@ import static org.jbpm.test.performance.jbpm.util.JbpmJmhPerformanceUtil.writeOb
 import static org.jbpm.test.performance.scenario.load.services.QueryProcessesAndTasksByVariables.PROCESS_VARIABLES_FILENAME;
 import static org.jbpm.test.performance.scenario.load.services.QueryProcessesAndTasksByVariables.TASK_VARIABLES_FILENAME;
 
-public class QueryProcessesAndTasksByVariablesTest extends AbstractQueryProcessesAndTasksByVariablesBaseTest {
-
+public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVariablesBaseTest {
     private static final Logger log = LoggerFactory.getLogger(QueryProcessesAndTasksByVariablesTest.class);
 
     @BeforeClass
     public static void loadScenario() throws Exception {
 
         startUpProcessInstances();
-
-        updateProcessAndTaskVariables(2);
+        updateProcessAndTaskVariables(1);
+        stopProcessInstances();
 
         writeObjectToFile(processVariables, PROCESS_VARIABLES_FILENAME);
         writeObjectToFile(taskVariables, TASK_VARIABLES_FILENAME);
 
-    }
-
-    @AfterClass
-    public static void tearDown() {
-        stopProcessInstances();
     }
 
     @Test
@@ -56,7 +50,7 @@ public class QueryProcessesAndTasksByVariablesTest extends AbstractQueryProcesse
                 .timeout(new TimeValue(timeout, TimeUnit.MINUTES))
                 .jvmArgsAppend(jvmArgsAppend.toArray(new String[0]))
                 .resultFormat(ResultFormatType.CSV)
-                .result("results.csv")
+                .result("dbpartitioning-results.csv")
                 .build();
         new Runner(opt).run();
     }
