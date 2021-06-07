@@ -49,7 +49,7 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
                 .timeout(new TimeValue(timeout, TimeUnit.MINUTES))
                 .jvmArgsAppend(jvmArgsAppend.toArray(new String[0]))
                 .resultFormat(ResultFormatType.CSV)
-                .result("dbpartitioning-results.csv")
+                .result("results.csv")
                 .build();
         new Runner(opt).run();
     }
