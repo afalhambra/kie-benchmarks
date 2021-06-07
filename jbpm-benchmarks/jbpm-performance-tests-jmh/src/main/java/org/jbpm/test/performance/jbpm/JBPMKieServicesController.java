@@ -26,9 +26,6 @@ import org.kie.test.util.db.PoolingDataSourceWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.transaction.SystemException;
-import javax.transaction.TransactionManager;
-
 public class JBPMKieServicesController extends AbstractKieServicesTest {
 
     protected static final Logger log = LoggerFactory.getLogger(JBPMKieServicesController.class);
@@ -199,13 +196,6 @@ public class JBPMKieServicesController extends AbstractKieServicesTest {
         List<NamedObjectModel> environmentEntries = super.getEnvironmentEntries();
         environmentEntries.add(new NamedObjectModel(EnvironmentName.USE_PESSIMISTIC_LOCKING, "java.lang.Boolean", new Object[]{String.valueOf(JBPMTestConfig.getInstance()
                 .isPessimisticLocking())}));
-        TransactionManager tm = com.arjuna.ats.jta.TransactionManager.transactionManager();
-        try {
-            tm.setTransactionTimeout(Integer.MAX_VALUE);
-        } catch (SystemException e) {
-            //
-        }
-        environmentEntries.add(new NamedObjectModel(EnvironmentName.TRANSACTION_MANAGER, "com.arjuna.ats.jta.TransactionManager", new Object[]{tm}));
         return environmentEntries;
     }
 
