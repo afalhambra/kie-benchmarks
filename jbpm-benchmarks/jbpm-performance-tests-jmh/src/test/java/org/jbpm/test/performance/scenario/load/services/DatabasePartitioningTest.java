@@ -1,6 +1,5 @@
 package org.jbpm.test.performance.scenario.load.services;
 
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openjdk.jmh.infra.Blackhole;
