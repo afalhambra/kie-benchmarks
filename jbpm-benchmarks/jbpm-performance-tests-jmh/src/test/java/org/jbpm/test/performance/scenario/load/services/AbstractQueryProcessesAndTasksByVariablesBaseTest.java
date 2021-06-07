@@ -91,9 +91,9 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
                 .forEach(task -> executorService.execute(() -> initOutputTaskVariables(task, initialOutputTaskVarsLatch)));
         initialOutputTaskVarsLatch.await();
 
-        // Update process and task variables twice
+        // Update process and task variables
         for (int i=0; i<updates; i++) {
-            log.debug("updating process and task variables twice - iteration {}...", i);
+            log.debug("updating process and task variables - iteration {}...", i);
             CountDownLatch updateProcessVarsLatch = new CountDownLatch(processIds.size());
             processVariables.forEach( (k, v) -> processVariables.replace(k, counter.getAndIncrement()));
 
