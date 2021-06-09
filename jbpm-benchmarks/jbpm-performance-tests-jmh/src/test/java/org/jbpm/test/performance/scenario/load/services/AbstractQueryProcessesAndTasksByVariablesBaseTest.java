@@ -120,7 +120,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
         log.debug("end updating process and task variables {} times", updates);
     }
 
-    protected static void stopProcessInstances() {
+    protected static void stopProcessInstances(boolean clean) {
         log.debug("tearing down jBPM processes...");
         // Workaround for https://issues.redhat.com/browse/RHPAM-3145 issue when starting up several processes in parallel
         if (!processIds.isEmpty()) {
@@ -144,7 +144,13 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
                 throw new RuntimeException("Error while closing down processes: " + e.getMessage(), e);
             }
         }
+        if (clean) {
+            clean();
+        }
+        log.debug("end tearing down jBPM processes...");
+    }
 
+    protected static void clean() {
         if (jc != null) {
             jc.undeployProcess();
         }
@@ -156,7 +162,6 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
             Files.delete(Paths.get(TEMP_FOLDER+PROCESS_VARIABLES_FILENAME));
             Files.delete(Paths.get(TEMP_FOLDER+TASK_VARIABLES_FILENAME));
         } catch (IOException ignored) {}
-        log.debug("end tearing down jBPM processes...");
     }
 
     protected static void initOutputTaskVariables (TaskSummary task, CountDownLatch latch) {

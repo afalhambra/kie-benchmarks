@@ -1,6 +1,7 @@
 package org.jbpm.test.performance.scenario.load.services;
 
 import org.jbpm.test.performance.jbpm.constant.ProcessStorage;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openjdk.jmh.infra.Blackhole;
@@ -28,11 +29,15 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
 
         startUpProcessInstances(ProcessStorage.DatabasePartitioningProcess);
         updateProcessAndTaskVariables(1);
-        stopProcessInstances();
+        stopProcessInstances(false);
 
         writeObjectToFile(processVariables, PROCESS_VARIABLES_FILENAME);
         writeObjectToFile(taskVariables, TASK_VARIABLES_FILENAME);
+    }
 
+    @AfterClass
+    public static void tearDown() {
+        clean();
     }
 
     @Test
@@ -70,6 +75,7 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
         queries.sampleTimeQueryProcessByVariables(blackhole);
         queries.sampleTimeQueryProcessByVariablesAndTask(blackhole);
         queries.sampleTimeQueryUserTasksByVariables(blackhole);
+        clean();
         System.out.println("finished main");
     }
 }
