@@ -38,7 +38,7 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
     @Test
     public void launchBenchmark() throws RunnerException {
         Options opt = new OptionsBuilder()
-                .include(DatabasePartitioningTest.class.getSimpleName())
+                .include(DatabasePartitioning.class.getSimpleName())
                 .param("processes", valueOf(processes))
                 .threads(threads)
                 .shouldFailOnError(failOnError)
@@ -58,7 +58,7 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
     public static void main(String[] args) throws Exception {
         setup();
         loadScenario();
-        QueryProcessesAndTasksByVariables queries = new QueryProcessesAndTasksByVariables();
+        DatabasePartitioning queries = new DatabasePartitioning();
         Blackhole blackhole = new Blackhole("Today's password is swordfish. I understand instantiating Blackholes directly is dangerous.");
         queries.init();
         queries.averageTimeQueryProcessByVariables(blackhole);

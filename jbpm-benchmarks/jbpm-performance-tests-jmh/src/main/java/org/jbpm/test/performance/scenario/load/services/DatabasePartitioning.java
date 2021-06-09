@@ -29,9 +29,9 @@ import static org.jbpm.test.performance.jbpm.util.JbpmJmhPerformanceUtil.readObj
 @Warmup(iterations = 1, time = 30)
 @Measurement(iterations = 1, time = 30)
 @Threads(1)
-public class QueryProcessesAndTasksByVariables extends AbstractQueryProcessesAndTasksByVariables {
+public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariables {
 
-    private static final Logger log = LoggerFactory.getLogger(QueryProcessesAndTasksByVariables.class);
+    private static final Logger log = LoggerFactory.getLogger(DatabasePartitioning.class);
 
     @Param("")
     private String processes;
@@ -40,7 +40,7 @@ public class QueryProcessesAndTasksByVariables extends AbstractQueryProcessesAnd
     public void init() throws Exception {
         processVariables = (Map<String, Object>) readObjectFromFile(PROCESS_VARIABLES_FILENAME);
         taskVariables = (Map<String, QueryTaskVariable>) readObjectFromFile(TASK_VARIABLES_FILENAME);
-        processStorage = ProcessStorage.QueryProcessesAndTasksByVariables;
+        processStorage = ProcessStorage.DatabasePartitioningProcess;
         advanceRuntimeDataService = JBPMKieServicesController
                 .getInstance(singletonList(processStorage.getPath()), PU_NAME)
                 .getAdvanceRuntimeDataService();

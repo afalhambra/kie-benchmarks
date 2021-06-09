@@ -24,9 +24,9 @@ import java.util.function.Predicate;
 import static java.util.Collections.singletonList;
 import static java.util.stream.Collectors.toMap;
 import static org.jbpm.test.performance.jbpm.util.JbpmJmhPerformanceUtil.TEMP_FOLDER;
-import static org.jbpm.test.performance.scenario.load.services.QueryProcessesAndTasksByVariables.PROCESS_VARIABLES_FILENAME;
-import static org.jbpm.test.performance.scenario.load.services.QueryProcessesAndTasksByVariables.PU_NAME;
-import static org.jbpm.test.performance.scenario.load.services.QueryProcessesAndTasksByVariables.TASK_VARIABLES_FILENAME;
+import static org.jbpm.test.performance.scenario.load.services.AbstractQueryProcessesAndTasksByVariables.PROCESS_VARIABLES_FILENAME;
+import static org.jbpm.test.performance.scenario.load.services.AbstractQueryProcessesAndTasksByVariables.PU_NAME;
+import static org.jbpm.test.performance.scenario.load.services.AbstractQueryProcessesAndTasksByVariables.TASK_VARIABLES_FILENAME;
 
 public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends AbstractServicesPerformanceBaseTest {
 
@@ -36,7 +36,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
 
     protected static final Map<String, Object> processVariables = new ConcurrentHashMap<>();
 
-    protected static Map<String, QueryProcessesAndTasksByVariables.QueryTaskVariable> taskVariables = new ConcurrentHashMap<>();
+    protected static Map<String, AbstractQueryProcessesAndTasksByVariables.QueryTaskVariable> taskVariables = new ConcurrentHashMap<>();
 
     protected static final AtomicInteger counter = new AtomicInteger(0);
 
@@ -160,7 +160,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
     }
 
     protected static void initOutputTaskVariables (TaskSummary task, CountDownLatch latch) {
-        QueryProcessesAndTasksByVariables.QueryTaskVariable queryTaskVariable = taskVariables.get(task.getName());
+        AbstractQueryProcessesAndTasksByVariables.QueryTaskVariable queryTaskVariable = taskVariables.get(task.getName());
         Map<String, Object> outputVars = queryTaskVariable.getOutputVars();
         userTaskService.saveContent(task.getId(), outputVars);
         latch.countDown();
@@ -168,7 +168,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
 
     protected static void updateTaskVariables (TaskSummary task, CountDownLatch latch) {
         UserTaskInstanceDesc userTaskDesc = runtimeDataService.getTaskById(task.getId());
-        QueryProcessesAndTasksByVariables.QueryTaskVariable queryTaskVariable = taskVariables.get(userTaskDesc.getName());
+        AbstractQueryProcessesAndTasksByVariables.QueryTaskVariable queryTaskVariable = taskVariables.get(userTaskDesc.getName());
         Map<String, Object> oldOutputTask = userTaskService.getTaskOutputContentByTaskId(task.getId());
         Map<String, Object> newOutputTask = queryTaskVariable.getOutputVars();
 
@@ -214,7 +214,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
                 .collect(toMap(
                         UserTaskDefinition::getName,
                         userTaskDefinition -> {
-                            QueryProcessesAndTasksByVariables.QueryTaskVariable queryTaskVariable = new QueryProcessesAndTasksByVariables.QueryTaskVariable(userTaskDefinition.getName());
+                            AbstractQueryProcessesAndTasksByVariables.QueryTaskVariable queryTaskVariable = new AbstractQueryProcessesAndTasksByVariables.QueryTaskVariable(userTaskDefinition.getName());
                             userTaskDefinition.getTaskInputMappings().keySet().forEach(
                                     key -> queryTaskVariable.getInputVars().put(key, counter.getAndIncrement())
                             );
