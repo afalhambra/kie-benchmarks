@@ -4,7 +4,6 @@ import org.jbpm.services.api.model.UserTaskDefinition;
 import org.jbpm.services.api.model.UserTaskInstanceDesc;
 import org.jbpm.test.performance.jbpm.constant.ProcessStorage;
 import org.kie.api.task.model.TaskSummary;
-import org.kie.internal.query.QueryFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,17 +40,18 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
 
     protected static final AtomicInteger counter = new AtomicInteger(0);
 
-    protected static final ExecutorService executorService = Executors.newFixedThreadPool(100);
-    protected static final String processDefinitionId = ProcessStorage.QueryProcessesAndTasksByVariables.getProcessDefinitionId();
+    protected static final ExecutorService executorService = Executors.newFixedThreadPool(1000);
+    protected static String processDefinitionId;
 
     static {
         puName = PU_NAME;
     }
 
-    protected static void startUpProcessInstances() throws Exception {
+    protected static void startUpProcessInstances(ProcessStorage processStorage) throws Exception {
         log.debug("initiating jBPM processes...");
 
-        initServices(singletonList(ProcessStorage.QueryProcessesAndTasksByVariables.getPath()));
+        processDefinitionId = processStorage.getProcessDefinitionId();
+        initServices(singletonList(processStorage.getPath()));
 
         // Get process variables
         Map<String, String> processVarDefs = definitionService.getProcessVariables(deploymentUnit.getIdentifier(), processDefinitionId);
@@ -82,8 +82,8 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
         // Initialize output task variables
         log.debug("initializing output task variables...");
 
-        List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwner("perfUser", new QueryFilter(0,100));
-        //List<TaskSummary> tasks = internalTaskService.getTasksAssignedAsPotentialOwnerByProcessId("perfUser", processDefinitionId);
+        //List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwner("perfUser", new QueryFilter(0,100));
+        List<TaskSummary> tasks = internalTaskService.getTasksAssignedAsPotentialOwnerByProcessId("perfUser", processDefinitionId);
         Predicate<TaskSummary> filterOutputTaskVars = task -> filterByTaskVarName(task) && filterByOutputTaskVarName(task);
         int totalOutputTasks = (int)tasks.parallelStream()
                 .filter(filterOutputTaskVars)

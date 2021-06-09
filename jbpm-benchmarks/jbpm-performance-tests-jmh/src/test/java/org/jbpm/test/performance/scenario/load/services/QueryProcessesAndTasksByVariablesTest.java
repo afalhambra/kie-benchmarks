@@ -1,5 +1,6 @@
 package org.jbpm.test.performance.scenario.load.services;
 
+import org.jbpm.test.performance.jbpm.constant.ProcessStorage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -27,7 +28,7 @@ public class QueryProcessesAndTasksByVariablesTest extends AbstractQueryProcesse
     @BeforeClass
     public static void loadScenario() throws Exception {
 
-        startUpProcessInstances();
+        startUpProcessInstances(ProcessStorage.QueryProcessesAndTasksByVariables);
 
         updateProcessAndTaskVariables(2);
 

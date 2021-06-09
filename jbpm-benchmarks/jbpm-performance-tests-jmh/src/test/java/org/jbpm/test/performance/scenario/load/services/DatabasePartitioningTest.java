@@ -1,5 +1,6 @@
 package org.jbpm.test.performance.scenario.load.services;
 
+import org.jbpm.test.performance.jbpm.constant.ProcessStorage;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openjdk.jmh.infra.Blackhole;
@@ -20,12 +21,12 @@ import static org.jbpm.test.performance.scenario.load.services.QueryProcessesAnd
 import static org.jbpm.test.performance.scenario.load.services.QueryProcessesAndTasksByVariables.TASK_VARIABLES_FILENAME;
 
 public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVariablesBaseTest {
-    private static final Logger log = LoggerFactory.getLogger(QueryProcessesAndTasksByVariablesTest.class);
+    private static final Logger log = LoggerFactory.getLogger(DatabasePartitioningTest.class);
 
     @BeforeClass
     public static void loadScenario() throws Exception {
 
-        startUpProcessInstances();
+        startUpProcessInstances(ProcessStorage.DatabasePartitioningProcess);
         updateProcessAndTaskVariables(1);
         stopProcessInstances();
 
@@ -37,7 +38,7 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
     @Test
     public void launchBenchmark() throws RunnerException {
         Options opt = new OptionsBuilder()
-                .include(QueryProcessesAndTasksByVariables.class.getSimpleName())
+                .include(DatabasePartitioningTest.class.getSimpleName())
                 .param("processes", valueOf(processes))
                 .threads(threads)
                 .shouldFailOnError(failOnError)
