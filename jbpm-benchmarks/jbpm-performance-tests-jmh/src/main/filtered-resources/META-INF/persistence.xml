@@ -137,7 +137,11 @@
 
     <properties>
       <property name="hibernate.max_fetch_depth" value="3" />
+
+      <property name="use_sql_comments" value="true"/>
+      <property name="format_sql" value="true"/>
       <property name="hibernate.show_sql" value="false" />
+
       <property name="hibernate.dialect" value="${maven.hibernate.dialect}" />
       <property name="hibernate.hbm2ddl.auto" value="none"/>
       <property name="hibernate.connection.CharSet" value="utf8" />

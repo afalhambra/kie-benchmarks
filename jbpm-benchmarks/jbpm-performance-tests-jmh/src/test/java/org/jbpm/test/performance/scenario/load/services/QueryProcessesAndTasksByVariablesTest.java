@@ -39,7 +39,7 @@ public class QueryProcessesAndTasksByVariablesTest extends AbstractQueryProcesse
 
     @AfterClass
     public static void tearDown() {
-        stopProcessInstances(true);
+        stopProcessInstances();
     }
 
     @Test

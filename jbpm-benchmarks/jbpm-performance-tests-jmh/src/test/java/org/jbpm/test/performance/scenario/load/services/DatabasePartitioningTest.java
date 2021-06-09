@@ -26,10 +26,8 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
 
     @BeforeClass
     public static void loadScenario() throws Exception {
-
         startUpProcessInstances(ProcessStorage.DatabasePartitioningProcess);
         updateProcessAndTaskVariables(1);
-        stopProcessInstances(false);
 
         writeObjectToFile(processVariables, PROCESS_VARIABLES_FILENAME);
         writeObjectToFile(taskVariables, TASK_VARIABLES_FILENAME);
@@ -37,6 +35,7 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
 
     @AfterClass
     public static void tearDown() {
+        assertProcessInstancesStatus();
         clean();
     }
 

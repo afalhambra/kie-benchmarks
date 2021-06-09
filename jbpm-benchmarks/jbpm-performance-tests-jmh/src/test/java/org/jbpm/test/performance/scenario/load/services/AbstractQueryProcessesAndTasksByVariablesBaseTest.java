@@ -1,8 +1,11 @@
 package org.jbpm.test.performance.scenario.load.services;
 
+import org.jbpm.process.instance.ProcessInstance;
+import org.jbpm.services.api.model.ProcessInstanceDesc;
 import org.jbpm.services.api.model.UserTaskDefinition;
 import org.jbpm.services.api.model.UserTaskInstanceDesc;
 import org.jbpm.test.performance.jbpm.constant.ProcessStorage;
+import org.kie.api.runtime.query.QueryContext;
 import org.kie.api.task.model.TaskSummary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +26,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 
+import static java.util.Collections.emptyMap;
 import static java.util.Collections.singletonList;
 import static java.util.stream.Collectors.toMap;
 import static org.jbpm.test.performance.jbpm.util.JbpmJmhPerformanceUtil.TEMP_FOLDER;
@@ -56,7 +62,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
         // Get process variables
         Map<String, String> processVarDefs = definitionService.getProcessVariables(deploymentUnit.getIdentifier(), processDefinitionId);
         processVarDefs.entrySet().stream()
-                .filter( entry -> "integer".equalsIgnoreCase(entry.getValue()))
+                .filter( entry -> entry.getKey().contains("process_var") && "integer".equalsIgnoreCase(entry.getValue()))
                 .forEach(entry -> processVariables.put(entry.getKey(), counter.getAndIncrement()));
 
         // Start processes
@@ -120,7 +126,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
         log.debug("end updating process and task variables {} times", updates);
     }
 
-    protected static void stopProcessInstances(boolean clean) {
+    protected static void stopProcessInstances() {
         log.debug("tearing down jBPM processes...");
         // Workaround for https://issues.redhat.com/browse/RHPAM-3145 issue when starting up several processes in parallel
         if (!processIds.isEmpty()) {
@@ -144,10 +150,22 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
                 throw new RuntimeException("Error while closing down processes: " + e.getMessage(), e);
             }
         }
-        if (clean) {
-            clean();
-        }
+        clean();
         log.debug("end tearing down jBPM processes...");
+    }
+
+    protected static void assertProcessInstancesStatus() {
+        List<Long> pIds = new ArrayList<>();
+
+        Collection<ProcessInstanceDesc> processInstances = runtimeDataService.getProcessInstances(new QueryContext());
+        for (ProcessInstanceDesc processInstance : processInstances) {
+            if (processInstance.getState() != ProcessInstance.STATE_COMPLETED) {
+                pIds.add(processInstance.getId());
+            }
+        }
+        if (!pIds.isEmpty()) {
+            throw new IllegalStateException("There are process instances not completed yet with IDs " + pIds);
+        }
     }
 
     protected static void clean() {
@@ -196,7 +214,9 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
                         (v1, v2) -> counter.getAndIncrement(),
                         () -> new HashMap<>(oldInputTask)));
 
+        userTaskService.start(task.getId(), "perfUser");
         userTaskService.updateTask(task.getId(), "perfUser", userTaskDesc, mergedInput, mergedOutput);
+        userTaskService.complete(task.getId(), "perfUser", emptyMap());
 
         taskVariables.get(userTaskDesc.getName()).setInputVars(mergedInput);
         taskVariables.get(userTaskDesc.getName()).setOutputVars(mergedOutput);

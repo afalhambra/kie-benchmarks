@@ -51,6 +51,12 @@
     <level value="debug"/>
   </logger>
 
+  <!-- SQL debugging hibernate -->
+  <logger name="org.hibernate.SQL" level="debug"/>
+  <logger name="org.hibernate.type" level="trace"/>
+  <logger name="org.hibernate.jdbc" level="debug"/>
+  <!-- End SQL debugging hibernate -->
+
   <root level="info">
     <appender-ref ref="consoleAppender"/>
     <!-- Intentionally turned off for the tests, useful for debugging -->

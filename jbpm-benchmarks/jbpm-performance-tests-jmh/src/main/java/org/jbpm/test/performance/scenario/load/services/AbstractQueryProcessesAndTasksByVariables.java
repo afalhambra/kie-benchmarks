@@ -82,7 +82,11 @@ public abstract class AbstractQueryProcessesAndTasksByVariables {
     }
 
     protected void queryProcessByVariablesAndTask(Blackhole blackhole){
-        List<QueryParam> attributes = list(in(TASK_ATTR_STATUS, Status.Ready.toString(), Status.Created.toString(), Status.Reserved.toString(), Status.Exited.toString()));
+        List<QueryParam> attributes = list(in(TASK_ATTR_STATUS, Status.Ready.toString(),
+                                                                Status.Created.toString(),
+                                                                Status.Reserved.toString(),
+                                                                Status.Exited.toString(),
+                                                                Status.Completed.toString()));
         List<QueryParam> taskVariables = new ArrayList<>();
         this.taskVariables.values().stream()
                 .filter(queryTaskVariable ->
