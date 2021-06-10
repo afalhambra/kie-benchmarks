@@ -46,7 +46,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
 
     protected static final AtomicInteger counter = new AtomicInteger(0);
 
-    protected static final ExecutorService executorService = Executors.newFixedThreadPool(500);
+    protected static final ExecutorService executorService = Executors.newFixedThreadPool(100);
     protected static String processDefinitionId;
 
     static {
