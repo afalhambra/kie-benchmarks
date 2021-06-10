@@ -1,6 +1,7 @@
 package org.jbpm.test.performance.scenario.load.services;
 
 import org.jbpm.services.api.AdvanceRuntimeDataService;
+import org.jbpm.services.api.RuntimeDataService;
 import org.jbpm.services.api.model.ProcessInstanceWithVarsDesc;
 import org.jbpm.services.api.model.UserTaskInstanceWithPotOwnerDesc;
 import org.jbpm.services.api.query.model.QueryParam;
@@ -30,6 +31,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariables {
 
     protected Map<String, Object> processVariables;
     protected Map<String, QueryTaskVariable> taskVariables;
+    protected RuntimeDataService runtimeDataService;
     protected AdvanceRuntimeDataService advanceRuntimeDataService;
     protected ProcessStorage processStorage;
 

@@ -141,9 +141,7 @@
                     <autocommit>true</autocommit>
                     <srcFiles>
                       <srcFile>src/main/resources/ddl-scripts/perf-create-jbpm-schema.sql</srcFile>
-                      <!--
                       <srcFile>src/main/resources/ddl-scripts/db-partitioning.sql</srcFile>
-                      -->
                     </srcFiles>
                   </configuration>
                 </execution>

@@ -68,12 +68,13 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
         queries.averageTimeQueryProcessByVariables(blackhole);
         queries.averageTimeQueryProcessByVariablesAndTask(blackhole);
         queries.averageTimeQueryUserTasksByVariables(blackhole);
-        queries.throughputQueryProcessByVariables(blackhole);
-        queries.throughputQueryProcessByVariablesAndTask(blackhole);
-        queries.throughputQueryUserTasksByVariables(blackhole);
-        queries.sampleTimeQueryProcessByVariables(blackhole);
-        queries.sampleTimeQueryProcessByVariablesAndTask(blackhole);
-        queries.sampleTimeQueryUserTasksByVariables(blackhole);
+        queries.averageTimeQueryAuditTasks(blackhole);
+//        queries.throughputQueryProcessByVariables(blackhole);
+//        queries.throughputQueryProcessByVariablesAndTask(blackhole);
+//        queries.throughputQueryUserTasksByVariables(blackhole);
+//        queries.sampleTimeQueryProcessByVariables(blackhole);
+//        queries.sampleTimeQueryProcessByVariablesAndTask(blackhole);
+//        queries.sampleTimeQueryUserTasksByVariables(blackhole);
         clean();
         System.out.println("finished main");
     }

@@ -8,6 +8,7 @@ import org.jbpm.test.performance.jbpm.constant.ProcessStorage;
 import org.kie.api.runtime.query.QueryContext;
 import org.kie.api.task.model.Status;
 import org.kie.api.task.model.TaskSummary;
+import org.kie.internal.query.QueryFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -89,10 +90,10 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
         // Initialize output task variables
         log.debug("initializing output task variables...");
 
-        //List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwner("perfUser", new QueryFilter(0,100));
         List<Status> statuses = new ArrayList<>();
         statuses.add(Status.Reserved);
-        List<TaskSummary> tasks = internalTaskService.getTasksAssignedAsPotentialOwnerByStatus("perfUser", statuses, "en-UK");
+        //List<TaskSummary> tasks = internalTaskService.getTasksAssignedAsPotentialOwnerByStatus("perfUser", statuses, "en-UK");
+        List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwnerByStatus("perfUser", statuses, new QueryFilter());
         Predicate<TaskSummary> filterOutputTaskVars = task -> filterByTaskVarName(task) && filterByOutputTaskVarName(task);
         int totalOutputTasks = (int)tasks.parallelStream()
                 .filter(filterOutputTaskVars)
