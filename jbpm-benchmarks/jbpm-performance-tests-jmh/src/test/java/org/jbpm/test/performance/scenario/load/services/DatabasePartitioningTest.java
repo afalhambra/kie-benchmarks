@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.String.valueOf;
+import static org.jbpm.persistence.api.PersistenceEnvironmentName.DISABLE_ENTITY_CHECKS;
 import static org.jbpm.test.performance.jbpm.util.JbpmJmhPerformanceUtil.writeObjectToFile;
 import static org.jbpm.test.performance.scenario.load.services.QueryProcessesAndTasksByVariables.PROCESS_VARIABLES_FILENAME;
 import static org.jbpm.test.performance.scenario.load.services.QueryProcessesAndTasksByVariables.TASK_VARIABLES_FILENAME;
@@ -26,6 +27,8 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
 
     @BeforeClass
     public static void loadScenario() throws Exception {
+        // We need to disable Hibernate entity checks
+        System.setProperty("org.kie.api.persistence.disableEntityChecks", Boolean.TRUE.toString());
         startUpProcessInstances(ProcessStorage.DatabasePartitioningProcess);
         updateProcessAndTaskVariables(1);
 
@@ -37,6 +40,7 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
     public static void tearDown() {
         assertProcessInstancesStatus();
         clean();
+        System.clearProperty("org.kie.api.persistence.disableEntityChecks");
     }
 
     @Test
