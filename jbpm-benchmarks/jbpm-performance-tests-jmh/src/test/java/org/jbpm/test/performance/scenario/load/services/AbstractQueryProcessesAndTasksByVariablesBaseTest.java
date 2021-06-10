@@ -6,6 +6,7 @@ import org.jbpm.services.api.model.UserTaskDefinition;
 import org.jbpm.services.api.model.UserTaskInstanceDesc;
 import org.jbpm.test.performance.jbpm.constant.ProcessStorage;
 import org.kie.api.runtime.query.QueryContext;
+import org.kie.api.task.model.Status;
 import org.kie.api.task.model.TaskSummary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,11 +68,11 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
 
         // Start processes
         // Workaround for https://issues.redhat.com/browse/RHPAM-3145 issue when starting up several processes in parallel
-        processIds.add(processService.startProcess(deploymentUnit.getIdentifier(), processDefinitionId, processVariables));
+        workAroundOrgEntities();
 
         log.debug("starting up {} processes", processes);
-        CountDownLatch latch = new CountDownLatch(processes-1);
-        for (int i = 1; i < processes; i++) {
+        CountDownLatch latch = new CountDownLatch(processes);
+        for (int i = 0; i < processes; i++) {
             executorService.execute( () -> {
                 processIds.add(processService.startProcess(deploymentUnit.getIdentifier(), processDefinitionId, processVariables));
                 latch.countDown();
@@ -89,7 +90,9 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
         log.debug("initializing output task variables...");
 
         //List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwner("perfUser", new QueryFilter(0,100));
-        List<TaskSummary> tasks = internalTaskService.getTasksAssignedAsPotentialOwnerByProcessId("perfUser", processDefinitionId);
+        List<Status> statuses = new ArrayList<>();
+        statuses.add(Status.Reserved);
+        List<TaskSummary> tasks = internalTaskService.getTasksAssignedAsPotentialOwnerByStatus("perfUser", statuses, "en-UK");
         Predicate<TaskSummary> filterOutputTaskVars = task -> filterByTaskVarName(task) && filterByOutputTaskVarName(task);
         int totalOutputTasks = (int)tasks.parallelStream()
                 .filter(filterOutputTaskVars)
@@ -128,14 +131,8 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
 
     protected static void stopProcessInstances() {
         log.debug("tearing down jBPM processes...");
-        // Workaround for https://issues.redhat.com/browse/RHPAM-3145 issue when starting up several processes in parallel
-        if (!processIds.isEmpty()) {
-            jc.abortProcessInstances(singletonList(processIds.get(0)));
-            processIds.remove(0);
-        }
-
         if (processes > 0) {
-            CountDownLatch latch = new CountDownLatch(processes-1);
+            CountDownLatch latch = new CountDownLatch(processes);
             processIds.parallelStream().forEach(
                     id -> executorService.execute(
                             () -> {
@@ -221,6 +218,21 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
         taskVariables.get(userTaskDesc.getName()).setInputVars(mergedInput);
         taskVariables.get(userTaskDesc.getName()).setOutputVars(mergedOutput);
         latch.countDown();
+    }
+
+    /**
+     * Workaround for https://issues.redhat.com/browse/RHPAM-3145 issue when starting up several processes in parallel
+     */
+    private static void workAroundOrgEntities() {
+        Long processInstanceId = processService.startProcess(deploymentUnit.getIdentifier(), processDefinitionId);
+        List<TaskSummary> tasks = internalTaskService.getTasksAssignedAsPotentialOwnerByProcessId("perfUser", processDefinitionId);
+        for (TaskSummary task : tasks) {
+            userTaskService.start(task.getId(), "perfUser");
+            userTaskService.complete(task.getId(), "perfUser", emptyMap());
+        }
+        if (runtimeDataService.getProcessInstanceById(processInstanceId).getState() != ProcessInstance.STATE_COMPLETED) {
+            throw new IllegalStateException("Single process instance for applying initial load is not completed yet");
+        }
     }
 
     protected static boolean filterByTaskVarName(TaskSummary taskName) {
