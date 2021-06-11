@@ -10,7 +10,7 @@ CREATE OR REPLACE FUNCTION archived() RETURNS TRIGGER AS $$
       IF NEW.processInstanceId IS NULL THEN
       	RETURN NEW;
       END IF;
-      table_archive := TG_TABLE_NAME || '_' || LPAD((NEW.processInstanceId / numberOfRows)::text, 10, '0');
+      table_archive := TG_TABLE_NAME || '_' || LPAD((NEW.processInstanceId / numberOfRows)::text, 6, '0') || to_char(current_timestamp, 'DD_MM_YY_HH_MI_SS_MS');
       SELECT to_regclass(table_archive) INTO isTable;
       IF isTable IS NULL THEN
           startPartition := numberOfRows*(NEW.processInstanceId / numberOfRows);
