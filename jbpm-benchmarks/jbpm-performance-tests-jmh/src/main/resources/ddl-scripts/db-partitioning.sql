@@ -2,7 +2,7 @@ CREATE OR REPLACE FUNCTION archived() RETURNS TRIGGER AS $$
    DECLARE
       table_archive text := '';
       createTable text := '';
-      numberOfRows integer := 10;
+      numberOfRows integer := 100000;
       isTable varchar := '';
       startPartition integer:= 0;
       endPartition integer := 10;
