@@ -220,6 +220,7 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
     private void queryNodeLog(Blackhole blackhole) {
         List<NodeInstanceLog> nodeInstanceLogs = ((AuditLogService)auditService).nodeInstanceLogQuery().
                 nodeType("HumanTaskNode").
+                processInstanceIdRange(100L, 200L).
                 build().
                 getResultList();
         if (nodeInstanceLogs == null || nodeInstanceLogs.isEmpty()){
