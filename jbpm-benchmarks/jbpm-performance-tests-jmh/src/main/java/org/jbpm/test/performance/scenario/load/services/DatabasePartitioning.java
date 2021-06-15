@@ -1,13 +1,13 @@
 package org.jbpm.test.performance.scenario.load.services;
 
 import org.jbpm.process.audit.AuditLogService;
-import org.jbpm.process.audit.VariableInstanceLog;
 import org.jbpm.services.task.audit.service.TaskJPAAuditService;
 import org.jbpm.test.performance.jbpm.JBPMKieServicesController;
 import org.jbpm.test.performance.jbpm.constant.ProcessStorage;
 import org.kie.api.definition.process.NodeType;
 import org.kie.api.runtime.manager.audit.NodeInstanceLog;
 import org.kie.api.runtime.manager.audit.ProcessInstanceLog;
+import org.kie.api.runtime.manager.audit.VariableInstanceLog;
 import org.kie.api.task.model.Status;
 import org.kie.internal.query.QueryFilter;
 import org.kie.internal.task.api.AuditTask;
@@ -56,9 +56,6 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
         processVariables = (Map<String, Object>) readObjectFromFile(PROCESS_VARIABLES_FILENAME);
         taskVariables = (Map<String, QueryTaskVariable>) readObjectFromFile(TASK_VARIABLES_FILENAME);
         processStorage = ProcessStorage.DatabasePartitioningProcess;
-        runtimeDataService = JBPMKieServicesController
-                .getInstance(singletonList(processStorage.getPath()), PU_NAME)
-                .getRuntimeDataService();
         advanceRuntimeDataService = JBPMKieServicesController
                 .getInstance(singletonList(processStorage.getPath()), PU_NAME)
                 .getAdvanceRuntimeDataService();
@@ -192,16 +189,11 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
     }
 
     private void queryAuditTasks(Blackhole blackhole) {
-        List<String> statuses = new ArrayList<>(asList(Status.Reserved.toString(),
-                                                       Status.Completed.toString(),
-                                                       Status.Exited.toString(),
-                                                       Status.Obsolete.toString()));
-        Map<String, Object> params = new HashMap<>();
-        params.put("statuses", statuses);
-
-        QueryFilter queryFilter = new QueryFilter();
-        queryFilter.setParams(params);
-        List<AuditTask> auditTasks = runtimeDataService.getAllAuditTaskByStatus("perfUser", queryFilter);
+        List<AuditTask> auditTasks = ((TaskJPAAuditService)auditService).auditTaskQuery().
+                taskStatus(Status.Reserved, Status.Completed, Status.Exited, Status.Obsolete).
+                processInstanceIdRange(100L, 200L).
+                build().
+                getResultList();
         if (auditTasks == null || auditTasks.isEmpty()){
             throw new IllegalStateException("Number of audit tasks returned by query is null or do not match with expected values");
         }
@@ -210,7 +202,11 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
 
     private void queryVariableLog(Blackhole blackhole) {
         Map.Entry<String, Object> entry = processVariables.entrySet().stream().findFirst().get();
-        List<VariableInstanceLog> variableInstanceLogs = ((AuditLogService)auditService).findVariableInstancesByNameAndValue(entry.getKey(), entry.getValue().toString(), false);
+        List<VariableInstanceLog> variableInstanceLogs = ((AuditLogService)auditService).variableInstanceLogQuery().
+                variableValue(entry.getKey(), entry.getValue().toString()).
+                processInstanceIdRange(100L, 200L).
+                build().
+                getResultList();
         if (variableInstanceLogs == null || variableInstanceLogs.isEmpty()){
             throw new IllegalStateException("Number of variable instance logs returned by query is null or do not match with expected values");
         }

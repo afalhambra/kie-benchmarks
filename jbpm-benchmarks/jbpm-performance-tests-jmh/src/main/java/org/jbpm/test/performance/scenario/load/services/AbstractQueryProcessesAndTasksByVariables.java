@@ -34,7 +34,6 @@ public abstract class AbstractQueryProcessesAndTasksByVariables {
 
     protected Map<String, Object> processVariables;
     protected Map<String, QueryTaskVariable> taskVariables;
-    protected RuntimeDataService runtimeDataService;
     protected AdvanceRuntimeDataService advanceRuntimeDataService;
     protected AuditService auditService;
     protected ProcessStorage processStorage;
