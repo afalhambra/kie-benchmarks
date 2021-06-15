@@ -1,11 +1,14 @@
 package org.jbpm.test.performance.scenario.load.services;
 
+import org.jbpm.process.audit.AuditLogService;
 import org.jbpm.services.api.AdvanceRuntimeDataService;
 import org.jbpm.services.api.RuntimeDataService;
 import org.jbpm.services.api.model.ProcessInstanceWithVarsDesc;
 import org.jbpm.services.api.model.UserTaskInstanceWithPotOwnerDesc;
 import org.jbpm.services.api.query.model.QueryParam;
+import org.jbpm.services.task.audit.service.TaskJPAAuditService;
 import org.jbpm.test.performance.jbpm.constant.ProcessStorage;
+import org.kie.api.runtime.manager.audit.AuditService;
 import org.kie.api.task.model.Status;
 import org.kie.internal.query.QueryContext;
 import org.openjdk.jmh.infra.Blackhole;
@@ -33,6 +36,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariables {
     protected Map<String, QueryTaskVariable> taskVariables;
     protected RuntimeDataService runtimeDataService;
     protected AdvanceRuntimeDataService advanceRuntimeDataService;
+    protected AuditService auditService;
     protected ProcessStorage processStorage;
 
     public static final String PROCESS_VARIABLES_FILENAME = "processVariables.dat";

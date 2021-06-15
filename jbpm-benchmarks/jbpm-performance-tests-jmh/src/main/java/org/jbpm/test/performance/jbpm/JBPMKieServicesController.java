@@ -1,11 +1,5 @@
 package org.jbpm.test.performance.jbpm;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-
 import org.dashbuilder.DataSetCore;
 import org.jbpm.kie.services.impl.KModuleDeploymentUnit;
 import org.jbpm.services.api.AdvanceRuntimeDataService;
@@ -19,12 +13,19 @@ import org.jbpm.test.performance.jbpm.services.CustomIdentityProvider;
 import org.jbpm.test.performance.jbpm.services.CustomUserGroupCallback;
 import org.jbpm.test.services.AbstractKieServicesTest;
 import org.kie.api.runtime.EnvironmentName;
+import org.kie.api.runtime.manager.audit.AuditService;
 import org.kie.internal.runtime.conf.NamedObjectModel;
 import org.kie.internal.runtime.conf.RuntimeStrategy;
 import org.kie.test.util.db.DataSourceFactory;
 import org.kie.test.util.db.PoolingDataSourceWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
 public class JBPMKieServicesController extends AbstractKieServicesTest {
 
@@ -221,5 +222,9 @@ public class JBPMKieServicesController extends AbstractKieServicesTest {
 
     public AdvanceRuntimeDataService getAdvanceRuntimeDataService(){
         return this.advanceVariableDataService;
+    }
+
+    public AuditService getAuditService() {
+        return this.auditService;
     }
 }
