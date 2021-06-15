@@ -180,6 +180,8 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
         List<TaskEvent> taskEvents = ((TaskJPAAuditService)auditService).taskEventQuery().
                 type(TaskEvent.TaskEventType.COMPLETED).
                 processInstanceIdRange(100L, 200L).
+                offset(0).
+                maxResults(100).
                 build().
                 getResultList();
         if (taskEvents == null || taskEvents.isEmpty()){
@@ -192,6 +194,8 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
         List<AuditTask> auditTasks = ((TaskJPAAuditService)auditService).auditTaskQuery().
                 taskStatus(Status.Reserved, Status.Completed, Status.Exited, Status.Obsolete).
                 processInstanceIdRange(100L, 200L).
+                offset(0).
+                maxResults(100).
                 build().
                 getResultList();
         if (auditTasks == null || auditTasks.isEmpty()){
@@ -205,6 +209,8 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
         List<VariableInstanceLog> variableInstanceLogs = ((AuditLogService)auditService).variableInstanceLogQuery().
                 variableValue(entry.getKey(), entry.getValue().toString()).
                 processInstanceIdRange(100L, 200L).
+                offset(0).
+                maxResults(100).
                 build().
                 getResultList();
         if (variableInstanceLogs == null || variableInstanceLogs.isEmpty()){
@@ -217,6 +223,8 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
         List<NodeInstanceLog> nodeInstanceLogs = ((AuditLogService)auditService).nodeInstanceLogQuery().
                 nodeType("HumanTaskNode").
                 processInstanceIdRange(100L, 200L).
+                offset(0).
+                maxResults(100).
                 build().
                 getResultList();
         if (nodeInstanceLogs == null || nodeInstanceLogs.isEmpty()){
@@ -229,6 +237,8 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
         List<ProcessInstanceLog> processInstanceLogs = ((AuditLogService)auditService).processInstanceLogQuery().
                 processId(ProcessStorage.DatabasePartitioningProcess.getProcessDefinitionId()).
                 processInstanceIdRange(100L, 200L).
+                offset(0).
+                maxResults(100).
                 build().
                 getResultList();
         if (processInstanceLogs == null || processInstanceLogs.isEmpty()){
