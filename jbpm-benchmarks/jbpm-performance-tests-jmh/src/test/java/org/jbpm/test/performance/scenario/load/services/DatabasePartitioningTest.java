@@ -1,5 +1,6 @@
 package org.jbpm.test.performance.scenario.load.services;
 
+import org.jbpm.process.instance.ProcessInstance;
 import org.jbpm.test.performance.jbpm.constant.ProcessStorage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -17,7 +18,6 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.String.valueOf;
-import static org.jbpm.persistence.api.PersistenceEnvironmentName.DISABLE_ENTITY_CHECKS;
 import static org.jbpm.test.performance.jbpm.util.JbpmJmhPerformanceUtil.writeObjectToFile;
 import static org.jbpm.test.performance.scenario.load.services.QueryProcessesAndTasksByVariables.PROCESS_VARIABLES_FILENAME;
 import static org.jbpm.test.performance.scenario.load.services.QueryProcessesAndTasksByVariables.TASK_VARIABLES_FILENAME;
@@ -38,7 +38,7 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
 
     @AfterClass
     public static void tearDown() {
-        assertProcessInstancesStatus();
+        assertProcessInstancesStatus(ProcessInstance.STATE_COMPLETED);
         clean();
         System.clearProperty("org.kie.api.persistence.disableEntityChecks");
     }
@@ -70,7 +70,7 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
         Blackhole blackhole = new Blackhole("Today's password is swordfish. I understand instantiating Blackholes directly is dangerous.");
         queries.init();
         queries.averageTimeQueryProcessByVariables(blackhole);
-        queries.averageTimeQueryProcessByVariablesAndTask(blackhole);
+        //queries.averageTimeQueryProcessByVariablesAndTask(blackhole);
         queries.averageTimeQueryUserTasksByVariables(blackhole);
         queries.averageTimeQueryAuditTasks(blackhole);
 //        queries.throughputQueryProcessByVariables(blackhole);

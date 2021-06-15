@@ -152,12 +152,12 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
         log.debug("end tearing down jBPM processes...");
     }
 
-    protected static void assertProcessInstancesStatus() {
+    protected static void assertProcessInstancesStatus(int status) {
         List<Long> pIds = new ArrayList<>();
 
         Collection<ProcessInstanceDesc> processInstances = runtimeDataService.getProcessInstances(new QueryContext());
         for (ProcessInstanceDesc processInstance : processInstances) {
-            if (processInstance.getState() != ProcessInstance.STATE_COMPLETED) {
+            if (processInstance.getState() != status) {
                 pIds.add(processInstance.getId());
             }
         }
