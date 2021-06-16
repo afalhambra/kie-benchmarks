@@ -6,7 +6,7 @@ CREATE TABLE audittaskimpl_000004 PARTITION OF AuditTaskImpl FOR VALUES FROM (10
 CREATE TABLE audittaskimpl_000005 PARTITION OF AuditTaskImpl FOR VALUES FROM (125001) TO (150000);
 CREATE TABLE audittaskimpl_000006 PARTITION OF AuditTaskImpl FOR VALUES FROM (150001) TO (175000);
 CREATE TABLE audittaskimpl_000007 PARTITION OF AuditTaskImpl FOR VALUES FROM (175001) TO (200000);
-CREATE TABLE audittaskimpl_000008 PARTITION OF AuditTaskImpl FOR VALUES FROM (200001 TO (225000);
+CREATE TABLE audittaskimpl_000008 PARTITION OF AuditTaskImpl FOR VALUES FROM (200001) TO (225000);
 CREATE TABLE audittaskimpl_000009 PARTITION OF AuditTaskImpl FOR VALUES FROM (225000) TO (250000);
 
 CREATE TABLE bamtasksummary_000000 PARTITION OF BAMTaskSummary FOR VALUES FROM (1) TO (25000);
@@ -17,7 +17,7 @@ CREATE TABLE bamtasksummary_000004 PARTITION OF BAMTaskSummary FOR VALUES FROM (
 CREATE TABLE bamtasksummary_000005 PARTITION OF BAMTaskSummary FOR VALUES FROM (125001) TO (150000);
 CREATE TABLE bamtasksummary_000006 PARTITION OF BAMTaskSummary FOR VALUES FROM (150001) TO (175000);
 CREATE TABLE bamtasksummary_000007 PARTITION OF BAMTaskSummary FOR VALUES FROM (175001) TO (200000);
-CREATE TABLE bamtasksummary_000008 PARTITION OF BAMTaskSummary FOR VALUES FROM (200001 TO (225000);
+CREATE TABLE bamtasksummary_000008 PARTITION OF BAMTaskSummary FOR VALUES FROM (200001) TO (225000);
 CREATE TABLE bamtasksummary_000009 PARTITION OF BAMTaskSummary FOR VALUES FROM (225000) TO (250000);
 
 CREATE TABLE nodeinstancelog_000000 PARTITION OF NodeInstanceLog FOR VALUES FROM (1) TO (25000);
@@ -28,7 +28,7 @@ CREATE TABLE nodeinstancelog_000004 PARTITION OF NodeInstanceLog FOR VALUES FROM
 CREATE TABLE nodeinstancelog_000005 PARTITION OF NodeInstanceLog FOR VALUES FROM (125001) TO (150000);
 CREATE TABLE nodeinstancelog_000006 PARTITION OF NodeInstanceLog FOR VALUES FROM (150001) TO (175000);
 CREATE TABLE nodeinstancelog_000007 PARTITION OF NodeInstanceLog FOR VALUES FROM (175001) TO (200000);
-CREATE TABLE nodeinstancelog_000008 PARTITION OF NodeInstanceLog FOR VALUES FROM (200001 TO (225000);
+CREATE TABLE nodeinstancelog_000008 PARTITION OF NodeInstanceLog FOR VALUES FROM (200001) TO (225000);
 CREATE TABLE nodeinstancelog_000009 PARTITION OF NodeInstanceLog FOR VALUES FROM (225000) TO (250000);
 
 CREATE TABLE processinstancelog_000000 PARTITION OF ProcessInstanceLog FOR VALUES FROM (1) TO (25000);
@@ -39,7 +39,7 @@ CREATE TABLE processinstancelog_000004 PARTITION OF ProcessInstanceLog FOR VALUE
 CREATE TABLE processinstancelog_000005 PARTITION OF ProcessInstanceLog FOR VALUES FROM (125001) TO (150000);
 CREATE TABLE processinstancelog_000006 PARTITION OF ProcessInstanceLog FOR VALUES FROM (150001) TO (175000);
 CREATE TABLE processinstancelog_000007 PARTITION OF ProcessInstanceLog FOR VALUES FROM (175001) TO (200000);
-CREATE TABLE processinstancelog_000008 PARTITION OF ProcessInstanceLog FOR VALUES FROM (200001 TO (225000);
+CREATE TABLE processinstancelog_000008 PARTITION OF ProcessInstanceLog FOR VALUES FROM (200001) TO (225000);
 CREATE TABLE processinstancelog_000009 PARTITION OF ProcessInstanceLog FOR VALUES FROM (225000) TO (250000);
 
 CREATE TABLE taskevent_000000 PARTITION OF TaskEvent FOR VALUES FROM (1) TO (25000);
@@ -50,7 +50,7 @@ CREATE TABLE taskevent_000004 PARTITION OF TaskEvent FOR VALUES FROM (100001) TO
 CREATE TABLE taskevent_000005 PARTITION OF TaskEvent FOR VALUES FROM (125001) TO (150000);
 CREATE TABLE taskevent_000006 PARTITION OF TaskEvent FOR VALUES FROM (150001) TO (175000);
 CREATE TABLE taskevent_000007 PARTITION OF TaskEvent FOR VALUES FROM (175001) TO (200000);
-CREATE TABLE taskevent_000008 PARTITION OF TaskEvent FOR VALUES FROM (200001 TO (225000);
+CREATE TABLE taskevent_000008 PARTITION OF TaskEvent FOR VALUES FROM (200001) TO (225000);
 CREATE TABLE taskevent_000009 PARTITION OF TaskEvent FOR VALUES FROM (225000) TO (250000);
 
 CREATE TABLE variableinstancelog_000000 PARTITION OF VariableInstanceLog FOR VALUES FROM (1) TO (25000);
@@ -61,5 +61,72 @@ CREATE TABLE variableinstancelog_000004 PARTITION OF VariableInstanceLog FOR VAL
 CREATE TABLE variableinstancelog_000005 PARTITION OF VariableInstanceLog FOR VALUES FROM (125001) TO (150000);
 CREATE TABLE variableinstancelog_000006 PARTITION OF VariableInstanceLog FOR VALUES FROM (150001) TO (175000);
 CREATE TABLE variableinstancelog_000007 PARTITION OF VariableInstanceLog FOR VALUES FROM (175001) TO (200000);
-CREATE TABLE variableinstancelog_000008 PARTITION OF VariableInstanceLog FOR VALUES FROM (200001 TO (225000);
+CREATE TABLE variableinstancelog_000008 PARTITION OF VariableInstanceLog FOR VALUES FROM (200001) TO (225000);
 CREATE TABLE variableinstancelog_000009 PARTITION OF VariableInstanceLog FOR VALUES FROM (225000) TO (250000);
+
+
+create index IDX_AuditTaskImpl_partition_000000 on AuditTaskImpl_000000(processInstanceId);
+create index IDX_AuditTaskImpl_partition_000001 on AuditTaskImpl_000001(processInstanceId);
+create index IDX_AuditTaskImpl_partition_000002 on AuditTaskImpl_000002(processInstanceId);
+create index IDX_AuditTaskImpl_partition_000003 on AuditTaskImpl_000003(processInstanceId);
+create index IDX_AuditTaskImpl_partition_000004 on AuditTaskImpl_000004(processInstanceId);
+create index IDX_AuditTaskImpl_partition_000005 on AuditTaskImpl_000005(processInstanceId);
+create index IDX_AuditTaskImpl_partition_000006 on AuditTaskImpl_000006(processInstanceId);
+create index IDX_AuditTaskImpl_partition_000007 on AuditTaskImpl_000007(processInstanceId);
+create index IDX_AuditTaskImpl_partition_000008 on AuditTaskImpl_000008(processInstanceId);
+create index IDX_AuditTaskImpl_partition_000009 on AuditTaskImpl_000009(processInstanceId);
+
+create index IDX_BAMTaskSummary_partition_000000 on BAMTaskSummary_000000(processInstanceId);
+create index IDX_BAMTaskSummary_partition_000001 on BAMTaskSummary_000001(processInstanceId);
+create index IDX_BAMTaskSummary_partition_000002 on BAMTaskSummary_000002(processInstanceId);
+create index IDX_BAMTaskSummary_partition_000003 on BAMTaskSummary_000003(processInstanceId);
+create index IDX_BAMTaskSummary_partition_000004 on BAMTaskSummary_000004(processInstanceId);
+create index IDX_BAMTaskSummary_partition_000005 on BAMTaskSummary_000005(processInstanceId);
+create index IDX_BAMTaskSummary_partition_000006 on BAMTaskSummary_000006(processInstanceId);
+create index IDX_BAMTaskSummary_partition_000007 on BAMTaskSummary_000007(processInstanceId);
+create index IDX_BAMTaskSummary_partition_000008 on BAMTaskSummary_000008(processInstanceId);
+create index IDX_BAMTaskSummary_partition_000009 on BAMTaskSummary_000009(processInstanceId);
+
+create index IDX_NodeInstanceLog_partition_000000 on NodeInstanceLog_000000(processInstanceId);
+create index IDX_NodeInstanceLog_partition_000001 on NodeInstanceLog_000001(processInstanceId);
+create index IDX_NodeInstanceLog_partition_000002 on NodeInstanceLog_000002(processInstanceId);
+create index IDX_NodeInstanceLog_partition_000003 on NodeInstanceLog_000003(processInstanceId);
+create index IDX_NodeInstanceLog_partition_000004 on NodeInstanceLog_000004(processInstanceId);
+create index IDX_NodeInstanceLog_partition_000005 on NodeInstanceLog_000005(processInstanceId);
+create index IDX_NodeInstanceLog_partition_000006 on NodeInstanceLog_000006(processInstanceId);
+create index IDX_NodeInstanceLog_partition_000007 on NodeInstanceLog_000007(processInstanceId);
+create index IDX_NodeInstanceLog_partition_000008 on NodeInstanceLog_000008(processInstanceId);
+create index IDX_NodeInstanceLog_partition_000009 on NodeInstanceLog_000009(processInstanceId);
+
+create index IDX_ProcessInstanceLog_partition_000000 on ProcessInstanceLog_000000(processInstanceId);
+create index IDX_ProcessInstanceLog_partition_000001 on ProcessInstanceLog_000001(processInstanceId);
+create index IDX_ProcessInstanceLog_partition_000002 on ProcessInstanceLog_000002(processInstanceId);
+create index IDX_ProcessInstanceLog_partition_000003 on ProcessInstanceLog_000003(processInstanceId);
+create index IDX_ProcessInstanceLog_partition_000004 on ProcessInstanceLog_000004(processInstanceId);
+create index IDX_ProcessInstanceLog_partition_000005 on ProcessInstanceLog_000005(processInstanceId);
+create index IDX_ProcessInstanceLog_partition_000006 on ProcessInstanceLog_000006(processInstanceId);
+create index IDX_ProcessInstanceLog_partition_000007 on ProcessInstanceLog_000007(processInstanceId);
+create index IDX_ProcessInstanceLog_partition_000008 on ProcessInstanceLog_000008(processInstanceId);
+create index IDX_ProcessInstanceLog_partition_000009 on ProcessInstanceLog_000009(processInstanceId);
+
+create index IDX_TaskEvent_partition_000000 on TaskEvent_000000(processInstanceId);
+create index IDX_TaskEvent_partition_000001 on TaskEvent_000001(processInstanceId);
+create index IDX_TaskEvent_partition_000002 on TaskEvent_000002(processInstanceId);
+create index IDX_TaskEvent_partition_000003 on TaskEvent_000003(processInstanceId);
+create index IDX_TaskEvent_partition_000004 on TaskEvent_000004(processInstanceId);
+create index IDX_TaskEvent_partition_000005 on TaskEvent_000005(processInstanceId);
+create index IDX_TaskEvent_partition_000006 on TaskEvent_000006(processInstanceId);
+create index IDX_TaskEvent_partition_000007 on TaskEvent_000007(processInstanceId);
+create index IDX_TaskEvent_partition_000008 on TaskEvent_000008(processInstanceId);
+create index IDX_TaskEvent_partition_000009 on TaskEvent_000009(processInstanceId);
+
+create index IDX_VariableInstanceLogpartition_000000 on VariableInstanceLog_000000(processInstanceId);
+create index IDX_VariableInstanceLogpartition_000001 on VariableInstanceLog_000001(processInstanceId);
+create index IDX_VariableInstanceLogpartition_000002 on VariableInstanceLog_000002(processInstanceId);
+create index IDX_VariableInstanceLogpartition_000003 on VariableInstanceLog_000003(processInstanceId);
+create index IDX_VariableInstanceLogpartition_000004 on VariableInstanceLog_000004(processInstanceId);
+create index IDX_VariableInstanceLogpartition_000005 on VariableInstanceLog_000005(processInstanceId);
+create index IDX_VariableInstanceLogpartition_000006 on VariableInstanceLog_000006(processInstanceId);
+create index IDX_VariableInstanceLogpartition_000007 on VariableInstanceLog_000007(processInstanceId);
+create index IDX_VariableInstanceLogpartition_000008 on VariableInstanceLog_000008(processInstanceId);
+create index IDX_VariableInstanceLogpartition_000009 on VariableInstanceLog_000009(processInstanceId);
