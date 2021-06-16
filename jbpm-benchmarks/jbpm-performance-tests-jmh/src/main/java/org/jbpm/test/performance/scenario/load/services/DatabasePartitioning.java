@@ -71,12 +71,12 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
 //        queryProcessByVariables(blackhole);
 //    }
 
-//    @BenchmarkMode(Mode.SampleTime)
-//    @OutputTimeUnit(TimeUnit.SECONDS)
-//    @Benchmark
-//    public void sampleTimeQueryProcessByVariables(Blackhole blackhole) {
-//        queryProcessByVariables(blackhole);
-//    }
+    @BenchmarkMode(Mode.SampleTime)
+    @OutputTimeUnit(TimeUnit.SECONDS)
+    @Benchmark
+    public void sampleTimeQueryProcessByVariables(Blackhole blackhole) {
+        queryProcessByVariables(blackhole);
+    }
 
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.SECONDS)
@@ -99,12 +99,12 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
 //        queryUserTasksByVariables(blackhole);
 //    }
 
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.SECONDS)
-    @Benchmark
-    public void averageTimeQueryUserTasksByVariables(Blackhole blackhole) {
-        queryUserTasksByVariables(blackhole);
-    }
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.SECONDS)
+//    @Benchmark
+//    public void averageTimeQueryUserTasksByVariables(Blackhole blackhole) {
+//        queryUserTasksByVariables(blackhole);
+//    }
 
 //    @BenchmarkMode(Mode.Throughput)
 //    @OutputTimeUnit(TimeUnit.SECONDS)
@@ -141,109 +141,109 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
 //        queryProcessByVariables(blackhole);
 //    }
 
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.SECONDS)
-    @Benchmark
-    public void averageTimeQueryAuditTasks(Blackhole blackhole) {
-        queryAuditTasks(blackhole);
-    }
-
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.SECONDS)
-    @Benchmark
-    public void averageTimeQueryVariableLog(Blackhole blackhole) {
-        queryVariableLog(blackhole);
-    }
-
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.SECONDS)
-    @Benchmark
-    public void averageTimeQueryNodeLog(Blackhole blackhole) {
-        queryNodeLog(blackhole);
-    }
-
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.SECONDS)
-    @Benchmark
-    public void averageTimeQueryProcessInstanceLog(Blackhole blackhole) {
-        queryProcessInstanceLog(blackhole);
-    }
-
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.SECONDS)
-    @Benchmark
-    public void averageTimeQueryTaskEvents(Blackhole blackhole) {
-        queryTaskEvents(blackhole);
-    }
-
-    private void queryTaskEvents(Blackhole blackhole) {
-        List<TaskEvent> taskEvents = ((TaskJPAAuditService)auditService).taskEventQuery().
-                type(TaskEvent.TaskEventType.COMPLETED).
-                processInstanceIdRange(100L, 200L).
-                offset(0).
-                maxResults(100).
-                build().
-                getResultList();
-        if (taskEvents == null || taskEvents.isEmpty()){
-            throw new IllegalStateException("Number of task events returned by query is null or do not match with expected values");
-        }
-        blackhole.consume(taskEvents);
-    }
-
-    private void queryAuditTasks(Blackhole blackhole) {
-        List<AuditTask> auditTasks = ((TaskJPAAuditService)auditService).auditTaskQuery().
-                taskStatus(Status.Reserved, Status.Completed, Status.Exited, Status.Obsolete).
-                processInstanceIdRange(100L, 200L).
-                offset(0).
-                maxResults(100).
-                build().
-                getResultList();
-        if (auditTasks == null || auditTasks.isEmpty()){
-            throw new IllegalStateException("Number of audit tasks returned by query is null or do not match with expected values");
-        }
-        blackhole.consume(auditTasks);
-    }
-
-    private void queryVariableLog(Blackhole blackhole) {
-        Map.Entry<String, Object> entry = processVariables.entrySet().stream().findFirst().get();
-        List<VariableInstanceLog> variableInstanceLogs = ((AuditLogService)auditService).variableInstanceLogQuery().
-                variableValue(entry.getKey(), entry.getValue().toString()).
-                processInstanceIdRange(100L, 200L).
-                offset(0).
-                maxResults(100).
-                build().
-                getResultList();
-        if (variableInstanceLogs == null || variableInstanceLogs.isEmpty()){
-            throw new IllegalStateException("Number of variable instance logs returned by query is null or do not match with expected values");
-        }
-        blackhole.consume(variableInstanceLogs);
-    }
-
-    private void queryNodeLog(Blackhole blackhole) {
-        List<NodeInstanceLog> nodeInstanceLogs = ((AuditLogService)auditService).nodeInstanceLogQuery().
-                nodeType("HumanTaskNode").
-                processInstanceIdRange(100L, 200L).
-                offset(0).
-                maxResults(100).
-                build().
-                getResultList();
-        if (nodeInstanceLogs == null || nodeInstanceLogs.isEmpty()){
-            throw new IllegalStateException("Number of node instance logs returned by query is null or do not match with expected values");
-        }
-        blackhole.consume(nodeInstanceLogs);
-    }
-
-    private void queryProcessInstanceLog(Blackhole blackhole) {
-        List<ProcessInstanceLog> processInstanceLogs = ((AuditLogService)auditService).processInstanceLogQuery().
-                processId(ProcessStorage.DatabasePartitioningProcess.getProcessDefinitionId()).
-                processInstanceIdRange(100L, 200L).
-                offset(0).
-                maxResults(100).
-                build().
-                getResultList();
-        if (processInstanceLogs == null || processInstanceLogs.isEmpty()){
-            throw new IllegalStateException("Number of process instance logs returned by query is null or do not match with expected values");
-        }
-        blackhole.consume(processInstanceLogs);
-    }
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.SECONDS)
+//    @Benchmark
+//    public void averageTimeQueryAuditTasks(Blackhole blackhole) {
+//        queryAuditTasks(blackhole);
+//    }
+//
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.SECONDS)
+//    @Benchmark
+//    public void averageTimeQueryVariableLog(Blackhole blackhole) {
+//        queryVariableLog(blackhole);
+//    }
+//
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.SECONDS)
+//    @Benchmark
+//    public void averageTimeQueryNodeLog(Blackhole blackhole) {
+//        queryNodeLog(blackhole);
+//    }
+//
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.SECONDS)
+//    @Benchmark
+//    public void averageTimeQueryProcessInstanceLog(Blackhole blackhole) {
+//        queryProcessInstanceLog(blackhole);
+//    }
+//
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.SECONDS)
+//    @Benchmark
+//    public void averageTimeQueryTaskEvents(Blackhole blackhole) {
+//        queryTaskEvents(blackhole);
+//    }
+//
+//    private void queryTaskEvents(Blackhole blackhole) {
+//        List<TaskEvent> taskEvents = ((TaskJPAAuditService)auditService).taskEventQuery().
+//                type(TaskEvent.TaskEventType.COMPLETED).
+//                processInstanceIdRange(100L, 200L).
+//                offset(0).
+//                maxResults(100).
+//                build().
+//                getResultList();
+//        if (taskEvents == null || taskEvents.isEmpty()){
+//            throw new IllegalStateException("Number of task events returned by query is null or do not match with expected values");
+//        }
+//        blackhole.consume(taskEvents);
+//    }
+//
+//    private void queryAuditTasks(Blackhole blackhole) {
+//        List<AuditTask> auditTasks = ((TaskJPAAuditService)auditService).auditTaskQuery().
+//                taskStatus(Status.Reserved, Status.Completed, Status.Exited, Status.Obsolete).
+//                processInstanceIdRange(100L, 200L).
+//                offset(0).
+//                maxResults(100).
+//                build().
+//                getResultList();
+//        if (auditTasks == null || auditTasks.isEmpty()){
+//            throw new IllegalStateException("Number of audit tasks returned by query is null or do not match with expected values");
+//        }
+//        blackhole.consume(auditTasks);
+//    }
+//
+//    private void queryVariableLog(Blackhole blackhole) {
+//        Map.Entry<String, Object> entry = processVariables.entrySet().stream().findFirst().get();
+//        List<VariableInstanceLog> variableInstanceLogs = ((AuditLogService)auditService).variableInstanceLogQuery().
+//                variableValue(entry.getKey(), entry.getValue().toString()).
+//                processInstanceIdRange(100L, 200L).
+//                offset(0).
+//                maxResults(100).
+//                build().
+//                getResultList();
+//        if (variableInstanceLogs == null || variableInstanceLogs.isEmpty()){
+//            throw new IllegalStateException("Number of variable instance logs returned by query is null or do not match with expected values");
+//        }
+//        blackhole.consume(variableInstanceLogs);
+//    }
+//
+//    private void queryNodeLog(Blackhole blackhole) {
+//        List<NodeInstanceLog> nodeInstanceLogs = ((AuditLogService)auditService).nodeInstanceLogQuery().
+//                nodeType("HumanTaskNode").
+//                processInstanceIdRange(100L, 200L).
+//                offset(0).
+//                maxResults(100).
+//                build().
+//                getResultList();
+//        if (nodeInstanceLogs == null || nodeInstanceLogs.isEmpty()){
+//            throw new IllegalStateException("Number of node instance logs returned by query is null or do not match with expected values");
+//        }
+//        blackhole.consume(nodeInstanceLogs);
+//    }
+//
+//    private void queryProcessInstanceLog(Blackhole blackhole) {
+//        List<ProcessInstanceLog> processInstanceLogs = ((AuditLogService)auditService).processInstanceLogQuery().
+//                processId(ProcessStorage.DatabasePartitioningProcess.getProcessDefinitionId()).
+//                processInstanceIdRange(100L, 200L).
+//                offset(0).
+//                maxResults(100).
+//                build().
+//                getResultList();
+//        if (processInstanceLogs == null || processInstanceLogs.isEmpty()){
+//            throw new IllegalStateException("Number of process instance logs returned by query is null or do not match with expected values");
+//        }
+//        blackhole.consume(processInstanceLogs);
+//    }
 }
