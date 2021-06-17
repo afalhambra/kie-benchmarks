@@ -15,7 +15,6 @@ import org.jbpm.test.services.AbstractKieServicesTest;
 import org.kie.api.runtime.EnvironmentName;
 import org.kie.api.runtime.manager.audit.AuditService;
 import org.kie.internal.runtime.conf.NamedObjectModel;
-import org.kie.internal.runtime.conf.ObjectModel;
 import org.kie.internal.runtime.conf.RuntimeStrategy;
 import org.kie.test.util.db.DataSourceFactory;
 import org.kie.test.util.db.PoolingDataSourceWrapper;
@@ -77,15 +76,6 @@ public class JBPMKieServicesController extends AbstractKieServicesTest {
     @Override
     public DeploymentUnit prepareDeploymentUnit() throws Exception {
         return createAndDeployUnit(GROUP_ID, ARTIFACT_ID, VERSION);
-    }
-
-    @Override
-    protected List<ObjectModel> getProcessListeners() {
-        List<ObjectModel> listeners = super.getProcessListeners();
-
-        listeners.add(new ObjectModel("mvel", "org.jbpm.kie.test.util.CountDownListenerFactory.get(\"processAdminService\", \"timer\", 1)"));
-
-        return listeners;
     }
 
     @Override
