@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- origin at X=0.0 Y=0.0 -->
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xmlns:ns="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="_v5ytYGdpEDiPE4W5Q0JP1g" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.5.2.SNAPSHOT-v20200602-1600-B1" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:itemDefinition id="_process_var_1Item" isCollection="false" structureRef="Boolean"/>
+  <bpmn2:itemDefinition id="_process_var_2Item" isCollection="false" structureRef="Float"/>
+  <bpmn2:itemDefinition id="_process_var_3Item" isCollection="false" structureRef="Integer"/>
+  <bpmn2:itemDefinition id="_process_var_4Item" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_process_var_5Item" isCollection="false" structureRef="String"/>
+  <bpmn2:itemDefinition id="_process_var_6Item" isCollection="false" structureRef="Boolean"/>
+  <bpmn2:itemDefinition id="_process_var_7Item" isCollection="false" structureRef="Float"/>
+  <bpmn2:itemDefinition id="_process_var_8Item" isCollection="false" structureRef="Integer"/>
+  <bpmn2:itemDefinition id="_process_var_9Item" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_process_var_10Item" isCollection="false" structureRef="String"/>
+  <bpmn2:itemDefinition id="_scriptTask_2_SkippableInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_2_PriorityInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_2_CommentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_2_DescriptionInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_2_CreatedByInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_2_TaskNameInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_2_GroupIdInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_2_ContentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_2_NotStartedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_2_NotCompletedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_2_NotStartedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_2_NotCompletedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_2_task_var_in_2InputXItem" isCollection="false" structureRef="Float"/>
+  <bpmn2:itemDefinition id="_scriptTask_1_SkippableInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_1_PriorityInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_1_CommentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_1_DescriptionInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_1_CreatedByInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_1_TaskNameInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_1_GroupIdInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_1_ContentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_1_NotStartedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_1_NotCompletedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_1_NotStartedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_1_NotCompletedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_scriptTask_1_task_var_in_1InputXItem" isCollection="false" structureRef="Boolean"/>
+  <bpmn2:itemDefinition id="__3715E328-77C2-445C-90B7-251D390F03C5_SkippableInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3715E328-77C2-445C-90B7-251D390F03C5_PriorityInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3715E328-77C2-445C-90B7-251D390F03C5_CommentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3715E328-77C2-445C-90B7-251D390F03C5_DescriptionInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3715E328-77C2-445C-90B7-251D390F03C5_CreatedByInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3715E328-77C2-445C-90B7-251D390F03C5_TaskNameInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3715E328-77C2-445C-90B7-251D390F03C5_GroupIdInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3715E328-77C2-445C-90B7-251D390F03C5_ContentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3715E328-77C2-445C-90B7-251D390F03C5_NotStartedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3715E328-77C2-445C-90B7-251D390F03C5_NotCompletedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3715E328-77C2-445C-90B7-251D390F03C5_NotStartedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3715E328-77C2-445C-90B7-251D390F03C5_NotCompletedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3715E328-77C2-445C-90B7-251D390F03C5_task_var_in_3InputXItem" isCollection="false" structureRef="Integer"/>
+  <bpmn2:itemDefinition id="__5F2FBFDD-BF26-4B72-A71B-C383DD4B8E10_SkippableInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5F2FBFDD-BF26-4B72-A71B-C383DD4B8E10_PriorityInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5F2FBFDD-BF26-4B72-A71B-C383DD4B8E10_CommentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5F2FBFDD-BF26-4B72-A71B-C383DD4B8E10_DescriptionInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5F2FBFDD-BF26-4B72-A71B-C383DD4B8E10_CreatedByInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5F2FBFDD-BF26-4B72-A71B-C383DD4B8E10_TaskNameInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5F2FBFDD-BF26-4B72-A71B-C383DD4B8E10_GroupIdInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5F2FBFDD-BF26-4B72-A71B-C383DD4B8E10_ContentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5F2FBFDD-BF26-4B72-A71B-C383DD4B8E10_NotStartedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5F2FBFDD-BF26-4B72-A71B-C383DD4B8E10_NotCompletedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5F2FBFDD-BF26-4B72-A71B-C383DD4B8E10_NotStartedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5F2FBFDD-BF26-4B72-A71B-C383DD4B8E10_NotCompletedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__5F2FBFDD-BF26-4B72-A71B-C383DD4B8E10_task_var_in_4InputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__720A9C82-5F33-4389-AC76-848780CBC6F1_SkippableInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__720A9C82-5F33-4389-AC76-848780CBC6F1_PriorityInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__720A9C82-5F33-4389-AC76-848780CBC6F1_CommentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__720A9C82-5F33-4389-AC76-848780CBC6F1_DescriptionInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__720A9C82-5F33-4389-AC76-848780CBC6F1_CreatedByInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__720A9C82-5F33-4389-AC76-848780CBC6F1_TaskNameInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__720A9C82-5F33-4389-AC76-848780CBC6F1_GroupIdInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__720A9C82-5F33-4389-AC76-848780CBC6F1_ContentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__720A9C82-5F33-4389-AC76-848780CBC6F1_NotStartedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__720A9C82-5F33-4389-AC76-848780CBC6F1_NotCompletedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__720A9C82-5F33-4389-AC76-848780CBC6F1_NotStartedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__720A9C82-5F33-4389-AC76-848780CBC6F1_NotCompletedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__720A9C82-5F33-4389-AC76-848780CBC6F1_task_var_in_5InputXItem" isCollection="false" structureRef="String"/>
+  <bpmn2:itemDefinition id="__2D038EED-DFD0-4D3E-AE02-CE9DB72C758B_SkippableInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2D038EED-DFD0-4D3E-AE02-CE9DB72C758B_PriorityInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2D038EED-DFD0-4D3E-AE02-CE9DB72C758B_CommentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2D038EED-DFD0-4D3E-AE02-CE9DB72C758B_DescriptionInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2D038EED-DFD0-4D3E-AE02-CE9DB72C758B_CreatedByInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2D038EED-DFD0-4D3E-AE02-CE9DB72C758B_TaskNameInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2D038EED-DFD0-4D3E-AE02-CE9DB72C758B_GroupIdInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2D038EED-DFD0-4D3E-AE02-CE9DB72C758B_ContentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2D038EED-DFD0-4D3E-AE02-CE9DB72C758B_NotStartedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2D038EED-DFD0-4D3E-AE02-CE9DB72C758B_NotCompletedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2D038EED-DFD0-4D3E-AE02-CE9DB72C758B_NotStartedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__2D038EED-DFD0-4D3E-AE02-CE9DB72C758B_NotCompletedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4E686E1D-34AE-46EC-81F4-0C831E71E847_SkippableInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4E686E1D-34AE-46EC-81F4-0C831E71E847_PriorityInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4E686E1D-34AE-46EC-81F4-0C831E71E847_CommentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4E686E1D-34AE-46EC-81F4-0C831E71E847_DescriptionInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4E686E1D-34AE-46EC-81F4-0C831E71E847_CreatedByInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4E686E1D-34AE-46EC-81F4-0C831E71E847_TaskNameInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4E686E1D-34AE-46EC-81F4-0C831E71E847_GroupIdInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4E686E1D-34AE-46EC-81F4-0C831E71E847_ContentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4E686E1D-34AE-46EC-81F4-0C831E71E847_NotStartedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4E686E1D-34AE-46EC-81F4-0C831E71E847_NotCompletedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4E686E1D-34AE-46EC-81F4-0C831E71E847_NotStartedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__4E686E1D-34AE-46EC-81F4-0C831E71E847_NotCompletedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__232B6B14-D6BB-41FB-97E5-9DA0EE04DF6A_SkippableInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__232B6B14-D6BB-41FB-97E5-9DA0EE04DF6A_PriorityInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__232B6B14-D6BB-41FB-97E5-9DA0EE04DF6A_CommentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__232B6B14-D6BB-41FB-97E5-9DA0EE04DF6A_DescriptionInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__232B6B14-D6BB-41FB-97E5-9DA0EE04DF6A_CreatedByInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__232B6B14-D6BB-41FB-97E5-9DA0EE04DF6A_TaskNameInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__232B6B14-D6BB-41FB-97E5-9DA0EE04DF6A_GroupIdInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__232B6B14-D6BB-41FB-97E5-9DA0EE04DF6A_ContentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__232B6B14-D6BB-41FB-97E5-9DA0EE04DF6A_NotStartedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__232B6B14-D6BB-41FB-97E5-9DA0EE04DF6A_NotCompletedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__232B6B14-D6BB-41FB-97E5-9DA0EE04DF6A_NotStartedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__232B6B14-D6BB-41FB-97E5-9DA0EE04DF6A_NotCompletedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3472DA58-3717-4AB6-A598-5A7D88A303D7_SkippableInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3472DA58-3717-4AB6-A598-5A7D88A303D7_PriorityInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3472DA58-3717-4AB6-A598-5A7D88A303D7_CommentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3472DA58-3717-4AB6-A598-5A7D88A303D7_DescriptionInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3472DA58-3717-4AB6-A598-5A7D88A303D7_CreatedByInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3472DA58-3717-4AB6-A598-5A7D88A303D7_TaskNameInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3472DA58-3717-4AB6-A598-5A7D88A303D7_GroupIdInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3472DA58-3717-4AB6-A598-5A7D88A303D7_ContentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3472DA58-3717-4AB6-A598-5A7D88A303D7_NotStartedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3472DA58-3717-4AB6-A598-5A7D88A303D7_NotCompletedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3472DA58-3717-4AB6-A598-5A7D88A303D7_NotStartedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__3472DA58-3717-4AB6-A598-5A7D88A303D7_NotCompletedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__59B44CE6-C405-4055-BB44-048D7B5741DF_SkippableInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__59B44CE6-C405-4055-BB44-048D7B5741DF_PriorityInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__59B44CE6-C405-4055-BB44-048D7B5741DF_CommentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__59B44CE6-C405-4055-BB44-048D7B5741DF_DescriptionInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__59B44CE6-C405-4055-BB44-048D7B5741DF_CreatedByInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__59B44CE6-C405-4055-BB44-048D7B5741DF_TaskNameInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__59B44CE6-C405-4055-BB44-048D7B5741DF_GroupIdInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__59B44CE6-C405-4055-BB44-048D7B5741DF_ContentInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__59B44CE6-C405-4055-BB44-048D7B5741DF_NotStartedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__59B44CE6-C405-4055-BB44-048D7B5741DF_NotCompletedReassignInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__59B44CE6-C405-4055-BB44-048D7B5741DF_NotStartedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__59B44CE6-C405-4055-BB44-048D7B5741DF_NotCompletedNotifyInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_8" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_9" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_10" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_11" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_12" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_13" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_14" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_15" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_16" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_17" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_18" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_19" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_20" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_21" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_22" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_23" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_24" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_25" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_26" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_27" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_28" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_29" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_30" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_31" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_32" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_33" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_34" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_35" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_36" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_37" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_38" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_39" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_40" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_41" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_42" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_43" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_44" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_45" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_46" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_47" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_48" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_49" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_50" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_51" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_52" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_53" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_54" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_55" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_56" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_57" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_58" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_59" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_60" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_61" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_62" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_63" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_64" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_65" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_66" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_67" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_68" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_69" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_70" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_71" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_72" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_73" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_74" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_75" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_76" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_77" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_78" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_79" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_80" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_81" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_82" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_83" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="ItemDefinition_84" isCollection="false" structureRef="Object"/>
+  <bpmn2:process id="org.kie.perf.DatabasePartitioningProcess" drools:packageName="processes" drools:version="1" drools:adHoc="false" name="DatabasePartitioningProcess" isExecutable="true" processType="Public">
+    <bpmn2:property id="process_var_1" itemSubjectRef="__3715E328-77C2-445C-90B7-251D390F03C5_task_var_in_3InputXItem" name="process_var_1"/>
+    <bpmn2:property id="process_var_2" itemSubjectRef="__3715E328-77C2-445C-90B7-251D390F03C5_task_var_in_3InputXItem" name="process_var_2"/>
+    <bpmn2:property id="process_var_3" itemSubjectRef="_process_var_3Item" name="process_var_3"/>
+    <bpmn2:property id="task_data_output" itemSubjectRef="__3715E328-77C2-445C-90B7-251D390F03C5_task_var_in_3InputXItem" name="task_data_output"/>
+    <bpmn2:startEvent id="StartEvent_1">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:userTask id="scriptTask_1" name="Manual Task 1">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Manual Task 1]]></drools:metaValue>
+        </drools:metaData>
+        <drools:onEntry-script scriptFormat="http://www.java.com/java"/>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_8</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="_v57QQGdpEDiPE4W5Q0JP1g">
+        <bpmn2:dataInput id="scriptTask_1_TaskNameInputX" drools:dtype="Object" itemSubjectRef="_scriptTask_1_TaskNameInputXItem" name="TaskName"/>
+        <bpmn2:dataInput id="scriptTask_1_task_var_in_1InputX" drools:dtype="Boolean" itemSubjectRef="__3715E328-77C2-445C-90B7-251D390F03C5_task_var_in_3InputXItem" name="task_var_in_1"/>
+        <bpmn2:dataInput id="scriptTask_1_SkippableInputX" drools:dtype="Object" itemSubjectRef="_scriptTask_1_SkippableInputXItem" name="Skippable"/>
+        <bpmn2:dataOutput id="DataOutput_1" itemSubjectRef="__3715E328-77C2-445C-90B7-251D390F03C5_task_var_in_3InputXItem" name="task_var_out_1"/>
+        <bpmn2:inputSet id="_v57QQWdpEDiPE4W5Q0JP1g">
+          <bpmn2:dataInputRefs>scriptTask_1_TaskNameInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>scriptTask_1_task_var_in_1InputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>scriptTask_1_SkippableInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_1" name="Output Set 1">
+          <bpmn2:dataOutputRefs>DataOutput_1</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="_v57QQmdpEDiPE4W5Q0JP1g">
+        <bpmn2:targetRef>scriptTask_1_TaskNameInputX</bpmn2:targetRef>
+        <bpmn2:assignment id="_v57QQ2dpEDiPE4W5Q0JP1g">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_v57QRGdpEDiPE4W5Q0JP1g">Task1</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_v57QRWdpEDiPE4W5Q0JP1g">scriptTask_1_TaskNameInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_v57QRmdpEDiPE4W5Q0JP1g">
+        <bpmn2:sourceRef>process_var_1</bpmn2:sourceRef>
+        <bpmn2:targetRef>scriptTask_1_task_var_in_1InputX</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_v57QR2dpEDiPE4W5Q0JP1g">
+        <bpmn2:targetRef>scriptTask_1_SkippableInputX</bpmn2:targetRef>
+        <bpmn2:assignment id="_v57QSGdpEDiPE4W5Q0JP1g">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_v57QSWdpEDiPE4W5Q0JP1g">false</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_v57QSmdpEDiPE4W5Q0JP1g">scriptTask_1_SkippableInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_1">
+        <bpmn2:sourceRef>DataOutput_1</bpmn2:sourceRef>
+        <bpmn2:targetRef>task_data_output</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:potentialOwner id="PotentialOwner_1" name="Potential Owner 1">
+        <bpmn2:resourceAssignmentExpression id="ResourceAssignmentExpression_1">
+          <bpmn2:formalExpression id="FormalExpression_1">perfUser</bpmn2:formalExpression>
+        </bpmn2:resourceAssignmentExpression>
+      </bpmn2:potentialOwner>
+    </bpmn2:userTask>
+    <bpmn2:endEvent id="EndEvent_2">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_8</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_1" drools:priority="1" sourceRef="StartEvent_1" targetRef="scriptTask_1"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_8" drools:priority="1" sourceRef="scriptTask_1" targetRef="EndEvent_2"/>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="org.kie.perf.DatabasePartitioningProcess">
+      <bpmndi:BPMNShape id="shape_EndEvent_2" bpmnElement="EndEvent_2">
+        <dc:Bounds height="56.0" width="56.0" x="480.0" y="120.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_1"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_scriptTask_1" bpmnElement="scriptTask_1">
+        <dc:Bounds height="74.0" width="101.0" x="260.0" y="111.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_4">
+          <dc:Bounds height="14.0" width="79.0" x="271.0" y="141.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_StartEvent_1" bpmnElement="StartEvent_1">
+        <dc:Bounds height="56.0" width="56.0" x="60.0" y="120.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_6"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="shape_StartEvent_1" targetElement="shape_scriptTask_1">
+        <di:waypoint xsi:type="dc:Point" x="116.0" y="148.0"/>
+        <di:waypoint xsi:type="dc:Point" x="188.0" y="148.0"/>
+        <di:waypoint xsi:type="dc:Point" x="260.0" y="148.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_2"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_8" sourceElement="shape_scriptTask_1" targetElement="shape_EndEvent_2">
+        <di:waypoint xsi:type="dc:Point" x="361.0" y="148.0"/>
+        <di:waypoint xsi:type="dc:Point" x="420.0" y="148.0"/>
+        <di:waypoint xsi:type="dc:Point" x="480.0" y="148.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_3"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
