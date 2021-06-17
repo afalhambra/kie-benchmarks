@@ -71,12 +71,12 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
 //        queryProcessByVariables(blackhole);
 //    }
 
-    @BenchmarkMode(Mode.SampleTime)
-    @OutputTimeUnit(TimeUnit.SECONDS)
-    @Benchmark
-    public void sampleTimeQueryProcessByVariables(Blackhole blackhole) {
-        queryProcessByVariables(blackhole);
-    }
+//    @BenchmarkMode(Mode.SampleTime)
+//    @OutputTimeUnit(TimeUnit.SECONDS)
+//    @Benchmark
+//    public void sampleTimeQueryProcessByVariables(Blackhole blackhole) {
+//        queryProcessByVariables(blackhole);
+//    }
 
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.SECONDS)
