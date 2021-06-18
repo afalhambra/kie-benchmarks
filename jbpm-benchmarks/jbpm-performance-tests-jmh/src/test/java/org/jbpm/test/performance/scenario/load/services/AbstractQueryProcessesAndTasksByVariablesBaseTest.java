@@ -5,6 +5,7 @@ import org.jbpm.services.api.model.ProcessInstanceDesc;
 import org.jbpm.services.api.model.UserTaskDefinition;
 import org.jbpm.services.api.model.UserTaskInstanceDesc;
 import org.jbpm.test.performance.jbpm.constant.ProcessStorage;
+import org.jbpm.test.performance.jbpm.util.CountDownListenerFactory;
 import org.kie.api.runtime.query.QueryContext;
 import org.kie.api.task.model.Status;
 import org.kie.api.task.model.TaskSummary;
@@ -166,6 +167,10 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
         }
     }
 
+    protected static void waitForProcessesToComplete(String processDefinitionId) {
+        CountDownListenerFactory.getExisting(processDefinitionId).waitTillCompleted();
+    }
+
     protected static void clean() {
         if (jc != null) {
             jc.undeployProcess();
@@ -174,6 +179,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
         processVariables.clear();
         taskVariables.clear();
         executorService.shutdownNow();
+        CountDownListenerFactory.clear();
         try {
             Files.delete(Paths.get(TEMP_FOLDER+PROCESS_VARIABLES_FILENAME));
             Files.delete(Paths.get(TEMP_FOLDER+TASK_VARIABLES_FILENAME));
