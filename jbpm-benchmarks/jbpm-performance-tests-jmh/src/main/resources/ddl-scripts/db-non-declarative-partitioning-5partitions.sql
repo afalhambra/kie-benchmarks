@@ -2,31 +2,36 @@ CREATE TABLE audittaskimpl_000000(CHECK (processInstanceId IS NOT NULL AND proce
 CREATE TABLE audittaskimpl_000001(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 50000 AND processInstanceId < 100000 )) INHERITS (audittaskimpl);
 CREATE TABLE audittaskimpl_000002(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 100000 AND processInstanceId < 150000 )) INHERITS (audittaskimpl);
 CREATE TABLE audittaskimpl_000003(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 150000 AND processInstanceId < 200000 )) INHERITS (audittaskimpl);
-CREATE TABLE audittaskimpl_000004(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 200000 AND processInstanceId < 250010 )) INHERITS (audittaskimpl);
+CREATE TABLE audittaskimpl_000004(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 200000 AND processInstanceId < 250000 )) INHERITS (audittaskimpl);
+CREATE TABLE audittaskimpl_000005(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 250000 AND processInstanceId < 250010 )) INHERITS (audittaskimpl);
 
 CREATE TABLE nodeinstancelog_000000(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 1 AND processInstanceId < 50000 )) INHERITS (nodeinstancelog);
 CREATE TABLE nodeinstancelog_000001(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 50000 AND processInstanceId < 100000 )) INHERITS (nodeinstancelog);
 CREATE TABLE nodeinstancelog_000002(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 100000 AND processInstanceId < 150000 )) INHERITS (nodeinstancelog);
 CREATE TABLE nodeinstancelog_000003(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 150000 AND processInstanceId < 200000 )) INHERITS (nodeinstancelog);
-CREATE TABLE nodeinstancelog_000004(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 200000 AND processInstanceId < 250010 )) INHERITS (nodeinstancelog);
+CREATE TABLE nodeinstancelog_000004(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 200000 AND processInstanceId < 250000 )) INHERITS (nodeinstancelog);
+CREATE TABLE nodeinstancelog_000005(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 250000 AND processInstanceId < 250010 )) INHERITS (nodeinstancelog);
 
 CREATE TABLE processinstancelog_000000(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 1 AND processInstanceId < 50000 )) INHERITS (processinstancelog);
 CREATE TABLE processinstancelog_000001(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 50000 AND processInstanceId < 100000 )) INHERITS (processinstancelog);
 CREATE TABLE processinstancelog_000002(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 100000 AND processInstanceId < 150000 )) INHERITS (processinstancelog);
 CREATE TABLE processinstancelog_000003(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 150000 AND processInstanceId < 200000 )) INHERITS (processinstancelog);
-CREATE TABLE processinstancelog_000004(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 200000 AND processInstanceId < 250010 )) INHERITS (processinstancelog);
+CREATE TABLE processinstancelog_000004(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 200000 AND processInstanceId < 250000 )) INHERITS (processinstancelog);
+CREATE TABLE processinstancelog_000005(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 250000 AND processInstanceId < 250010 )) INHERITS (processinstancelog);
 
 CREATE TABLE taskevent_000000(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 1 AND processInstanceId < 50000 )) INHERITS (taskevent);
 CREATE TABLE taskevent_000001(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 50000 AND processInstanceId < 100000 )) INHERITS (taskevent);
 CREATE TABLE taskevent_000002(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 100000 AND processInstanceId < 150000 )) INHERITS (taskevent);
 CREATE TABLE taskevent_000003(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 150000 AND processInstanceId < 200000 )) INHERITS (taskevent);
-CREATE TABLE taskevent_000004(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 200000 AND processInstanceId < 250010 )) INHERITS (taskevent);
+CREATE TABLE taskevent_000004(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 200000 AND processInstanceId < 250000 )) INHERITS (taskevent);
+CREATE TABLE taskevent_000005(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 250000 AND processInstanceId < 250010 )) INHERITS (taskevent);
 
 CREATE TABLE variableinstancelog_000000(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 1 AND processInstanceId < 50000 )) INHERITS (variableinstancelog);
 CREATE TABLE variableinstancelog_000001(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 50000 AND processInstanceId < 100000 )) INHERITS (variableinstancelog);
 CREATE TABLE variableinstancelog_000002(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 100000 AND processInstanceId < 150000 )) INHERITS (variableinstancelog);
 CREATE TABLE variableinstancelog_000003(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 150000 AND processInstanceId < 200000 )) INHERITS (variableinstancelog);
-CREATE TABLE variableinstancelog_000004(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 200000 AND processInstanceId < 250010 )) INHERITS (variableinstancelog);
+CREATE TABLE variableinstancelog_000004(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 200000 AND processInstanceId < 250000 )) INHERITS (variableinstancelog);
+CREATE TABLE variableinstancelog_000005(CHECK (processInstanceId IS NOT NULL AND processInstanceId >= 250000 AND processInstanceId < 250010 )) INHERITS (variableinstancelog);
 
 CREATE OR REPLACE FUNCTION archived() RETURNS TRIGGER AS $$
    DECLARE
