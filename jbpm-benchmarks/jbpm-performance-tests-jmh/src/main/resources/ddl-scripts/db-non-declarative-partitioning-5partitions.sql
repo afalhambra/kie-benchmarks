@@ -31,7 +31,7 @@ CREATE TABLE variableinstancelog_000004(CHECK (processInstanceId IS NOT NULL AND
 CREATE OR REPLACE FUNCTION archived() RETURNS TRIGGER AS $$
    DECLARE
       table_archive text := '';
-      numberOfRows integer := 100000;
+      numberOfRows integer := 50000;
    BEGIN
       IF NEW.processInstanceId IS NULL THEN
       	RETURN NEW;
