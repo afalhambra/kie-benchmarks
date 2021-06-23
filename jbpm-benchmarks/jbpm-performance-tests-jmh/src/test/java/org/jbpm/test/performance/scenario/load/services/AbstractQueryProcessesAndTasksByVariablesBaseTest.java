@@ -87,7 +87,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
     protected static void updateProcessAndTaskVariables(int updates) throws InterruptedException {
         // Get input and output task vars
         taskVariables = getInputOutputTaskVars();
-        log.debug("processVariables={}", processVariables);
+        log.debug("processIds={}", processIds);
         log.debug("processVariables={}", processVariables);
         log.debug("taskVariables={}", taskVariables);
 
@@ -97,7 +97,8 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
         List<Status> statuses = new ArrayList<>();
         statuses.add(Status.Reserved);
         //List<TaskSummary> tasks = internalTaskService.getTasksAssignedAsPotentialOwnerByStatus("perfUser", statuses, "en-UK");
-        List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwnerByStatus("perfUser", statuses, new QueryFilter());
+        //List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwnerByStatus("perfUser", statuses, new QueryFilter());
+        List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwner("perfUser", new QueryFilter());
         log.debug("#{} tasks assigned to 'perfUser'", tasks.size());
         Predicate<TaskSummary> filterOutputTaskVars = task -> filterByTaskVarName(task) && filterByOutputTaskVarName(task);
         int totalOutputTasks = (int)tasks.parallelStream()
