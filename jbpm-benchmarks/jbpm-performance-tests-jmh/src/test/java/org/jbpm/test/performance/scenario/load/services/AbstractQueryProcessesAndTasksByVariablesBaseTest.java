@@ -122,6 +122,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
             int totalTasksToUpdate = (int)tasks.parallelStream()
                     .filter(QueryProcessesAndTasksByVariablesTest::filterByTaskVarName)
                     .count();
+            log.debug("#{} tasks to update", totalTasksToUpdate);
             CountDownLatch updateTaskVarsLatch = new CountDownLatch(totalTasksToUpdate);
             tasks.parallelStream()
                     .filter(QueryProcessesAndTasksByVariablesTest::filterByTaskVarName)
@@ -168,8 +169,17 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
         }
         if (!pIds.isEmpty()) {
             if (abortProcessInstances) {
-                for (Long id : pIds) {
-                    processService.abortProcessInstance(id);
+                log.debug("aborting process instances {}", pIds);
+                processService.abortProcessInstances(pIds);
+                pIds.clear();
+                Collection<ProcessInstanceDesc> processInstances2 = runtimeDataService.getProcessInstances(new QueryContext());
+                for (ProcessInstanceDesc processInstance : processInstances2) {
+                    if (processInstance.getState() != status) {
+                        pIds.add(processInstance.getId());
+                    }
+                }
+                if (!pIds.isEmpty()) {
+                    throw new IllegalStateException("There are process instances not completed yet with IDs " + pIds);
                 }
             } else {
                 throw new IllegalStateException("There are process instances not completed yet with IDs " + pIds);
