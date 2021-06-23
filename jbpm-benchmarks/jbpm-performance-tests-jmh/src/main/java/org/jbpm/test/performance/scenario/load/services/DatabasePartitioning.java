@@ -178,7 +178,7 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
 //        queryTaskEvents(blackhole);
 //    }
 
-    @BenchmarkMode(Mode.AverageTime)
+    @BenchmarkMode(Mode.SingleShotTime)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @Benchmark
     public void averageTimeLogCleanUp(Blackhole blackhole) throws Exception {
