@@ -154,6 +154,10 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
     }
 
     protected static void assertProcessInstancesStatus(int status) {
+        assertProcessInstancesStatus(status, false);
+    }
+
+    protected static void assertProcessInstancesStatus(int status, boolean abortProcessInstances) {
         List<Long> pIds = new ArrayList<>();
 
         Collection<ProcessInstanceDesc> processInstances = runtimeDataService.getProcessInstances(new QueryContext());
@@ -163,7 +167,13 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
             }
         }
         if (!pIds.isEmpty()) {
-            throw new IllegalStateException("There are process instances not completed yet with IDs " + pIds);
+            if (abortProcessInstances) {
+                for (Long id : pIds) {
+                    processService.abortProcessInstance(id);
+                }
+            } else {
+                throw new IllegalStateException("There are process instances not completed yet with IDs " + pIds);
+            }
         }
     }
 
