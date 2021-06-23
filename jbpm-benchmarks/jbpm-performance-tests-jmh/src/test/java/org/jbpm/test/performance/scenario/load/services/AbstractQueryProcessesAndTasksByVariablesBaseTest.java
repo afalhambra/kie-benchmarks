@@ -98,7 +98,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
         statuses.add(Status.Reserved);
         //List<TaskSummary> tasks = internalTaskService.getTasksAssignedAsPotentialOwnerByStatus("perfUser", statuses, "en-UK");
         //List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwnerByStatus("perfUser", statuses, new QueryFilter());
-        List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwner("perfUser", new QueryFilter());
+        List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwner("perfUser", new QueryFilter(0,250000));
         log.debug("#{} tasks assigned to 'perfUser'", tasks.size());
         Predicate<TaskSummary> filterOutputTaskVars = task -> filterByTaskVarName(task) && filterByOutputTaskVarName(task);
         int totalOutputTasks = (int)tasks.parallelStream()
