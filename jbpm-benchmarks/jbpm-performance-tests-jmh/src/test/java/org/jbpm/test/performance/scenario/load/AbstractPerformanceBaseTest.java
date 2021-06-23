@@ -46,7 +46,7 @@ public abstract class AbstractPerformanceBaseTest {
     @BeforeClass
     public static void setup() {
         Properties props = readProperties(JHM_CONFIG_FILE_LOCATION);
-        processes = Integer.parseInt(props.getProperty(JMH_JBPM_PROCESSES, "1"));
+        processes = 5;//Integer.parseInt(props.getProperty(JMH_JBPM_PROCESSES, "1"));
         threads = Integer.parseInt(props.getProperty(JMH_THREADS, "1"));
         failOnError = Boolean.parseBoolean(props.getProperty(JMH_FOE, "true"));
         doGc = Boolean.parseBoolean(props.getProperty(JMH_GC, "true"));

@@ -1,15 +1,16 @@
 package org.jbpm.test.performance.scenario.load.services;
 
+import org.jbpm.executor.commands.LogCleanupCommand;
 import org.jbpm.process.audit.AuditLogService;
 import org.jbpm.services.task.audit.service.TaskJPAAuditService;
 import org.jbpm.test.performance.jbpm.JBPMKieServicesController;
 import org.jbpm.test.performance.jbpm.constant.ProcessStorage;
-import org.kie.api.definition.process.NodeType;
+import org.kie.api.executor.CommandContext;
+import org.kie.api.executor.ExecutionResults;
 import org.kie.api.runtime.manager.audit.NodeInstanceLog;
 import org.kie.api.runtime.manager.audit.ProcessInstanceLog;
 import org.kie.api.runtime.manager.audit.VariableInstanceLog;
 import org.kie.api.task.model.Status;
-import org.kie.internal.query.QueryFilter;
 import org.kie.internal.task.api.AuditTask;
 import org.kie.internal.task.api.model.TaskEvent;
 import org.openjdk.jmh.annotations.Benchmark;
@@ -28,14 +29,13 @@ import org.openjdk.jmh.infra.Blackhole;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
-import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 import static org.jbpm.test.performance.jbpm.util.JbpmJmhPerformanceUtil.readObjectFromFile;
 
@@ -47,6 +47,8 @@ import static org.jbpm.test.performance.jbpm.util.JbpmJmhPerformanceUtil.readObj
 public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariables {
 
     private static final Logger log = LoggerFactory.getLogger(DatabasePartitioning.class);
+    private static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS";
+    private String dateFormat = DATE_FORMAT;
 
     @Param("")
     private String processes;
@@ -176,6 +178,27 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
         queryTaskEvents(blackhole);
     }
 
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+    @Benchmark
+    public void averageTimeLogCleanUp(Blackhole blackhole) throws Exception {
+        ExecutionResults results = executeLogCleanUp(false,
+                false,
+                true,
+                getTomorrow(),
+                null, processStorage.getProcessDefinitionId(), 0);
+        if (results == null || results.getData().isEmpty() ||
+                results.getData().get("TaskAuditLogRemoved") == null ||
+                results.getData().get("TaskEventLogRemoved") == null ||
+                results.getData().get("TaskVariableLogRemoved") == null ||
+                results.getData().get("NodeInstanceLogRemoved") == null ||
+                results.getData().get("VariableInstanceLogRemoved") == null ||
+                results.getData().get("ProcessInstanceLogRemoved") == null) {
+            throw new IllegalStateException("Expected data logs have not been cleaned up");
+        }
+        blackhole.consume(results);
+    }
+
     private void queryTaskEvents(Blackhole blackhole) {
         List<TaskEvent> taskEvents = ((TaskJPAAuditService)auditService).taskEventQuery().
                 type(TaskEvent.TaskEventType.COMPLETED).
@@ -245,5 +268,36 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
             throw new IllegalStateException("Number of process instance logs returned by query is null or do not match with expected values");
         }
         blackhole.consume(processInstanceLogs);
+    }
+
+    private ExecutionResults executeLogCleanUp(boolean skipProcessLog, boolean skipTaskLog, boolean skipExecutorLog,
+                                               Date olderThan,
+                                               String olderThanDuration,
+                                               String forProcess,
+                                               int recordsPerTransaction) throws Exception {
+        LogCleanupCommand command = new LogCleanupCommand();
+        CommandContext ctx = new CommandContext();
+        ctx.setData("EmfName", PU_NAME);
+        ctx.setData("SkipProcessLog", String.valueOf(skipProcessLog));
+        ctx.setData("SkipTaskLog", String.valueOf(skipTaskLog));
+        ctx.setData("SkipExecutorLog", String.valueOf(skipExecutorLog));
+        ctx.setData("SingleRun", "true");
+        ctx.setData("DateFormat", dateFormat);
+        ctx.setData("RecordsPerTransaction", recordsPerTransaction);
+        if (olderThan != null) {
+            ctx.setData("OlderThan", new SimpleDateFormat(dateFormat).format(olderThan));
+        }
+        if (olderThanDuration != null) {
+            ctx.setData("OlderThanPeriod", olderThanDuration);
+        }
+        ctx.setData("ForProcess", forProcess);
+        return command.execute(ctx);
+    }
+
+    private Date getTomorrow() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.DATE, 1);
+        return c.getTime();
     }
 }
