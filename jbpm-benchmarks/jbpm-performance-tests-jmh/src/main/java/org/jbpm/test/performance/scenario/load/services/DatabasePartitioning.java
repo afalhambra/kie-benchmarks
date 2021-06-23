@@ -41,7 +41,7 @@ import static org.jbpm.test.performance.jbpm.util.JbpmJmhPerformanceUtil.readObj
 
 @State(Scope.Benchmark)
 @Fork(value = 1, jvmArgs = {"-Xms2G", "-Xmx2G"})
-@Warmup(iterations = 1, time = 30)
+@Warmup(iterations = 0)
 @Measurement(iterations = 1, time = 30)
 @Threads(1)
 public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariables {
