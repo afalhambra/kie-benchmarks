@@ -87,9 +87,6 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
     protected static void updateProcessAndTaskVariables(int updates) throws InterruptedException {
         // Get input and output task vars
         taskVariables = getInputOutputTaskVars();
-        log.debug("processIds={}", processIds);
-        log.debug("processVariables={}", processVariables);
-        log.debug("taskVariables={}", taskVariables);
 
         // Initialize output task variables
         log.debug("initializing output task variables...");
