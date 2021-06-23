@@ -46,7 +46,7 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
         System.setProperty("org.kie.api.persistence.disableEntityChecks", Boolean.TRUE.toString());
         startUpProcessInstances(ProcessStorage.DatabasePartitioningProcess);
         updateProcessAndTaskVariables(1);
-        waitForProcessesToComplete(ProcessStorage.DatabasePartitioningProcess.getProcessDefinitionId());
+        //waitForProcessesToComplete(ProcessStorage.DatabasePartitioningProcess.getProcessDefinitionId());
 
         writeObjectToFile(processVariables, PROCESS_VARIABLES_FILENAME);
         writeObjectToFile(taskVariables, TASK_VARIABLES_FILENAME);
