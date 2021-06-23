@@ -80,12 +80,12 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
 //        queryProcessByVariables(blackhole);
 //    }
 
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.SECONDS)
-    @Benchmark
-    public void averageTimeQueryProcessByVariables(Blackhole blackhole) {
-        queryProcessByVariables(blackhole);
-    }
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.SECONDS)
+//    @Benchmark
+//    public void averageTimeQueryProcessByVariables(Blackhole blackhole) {
+//        queryProcessByVariables(blackhole);
+//    }
 
 //    @BenchmarkMode(Mode.Throughput)
 //    @OutputTimeUnit(TimeUnit.SECONDS)
@@ -143,40 +143,40 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
 //        queryProcessByVariables(blackhole);
 //    }
 
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @Benchmark
-    public void averageTimeQueryAuditTasks(Blackhole blackhole) {
-        queryAuditTasks(blackhole);
-    }
-
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @Benchmark
-    public void averageTimeQueryVariableLog(Blackhole blackhole) {
-        queryVariableLog(blackhole);
-    }
-
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @Benchmark
-    public void averageTimeQueryNodeLog(Blackhole blackhole) {
-        queryNodeLog(blackhole);
-    }
-
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @Benchmark
-    public void averageTimeQueryProcessInstanceLog(Blackhole blackhole) {
-        queryProcessInstanceLog(blackhole);
-    }
-
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @Benchmark
-    public void averageTimeQueryTaskEvents(Blackhole blackhole) {
-        queryTaskEvents(blackhole);
-    }
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+//    @Benchmark
+//    public void averageTimeQueryAuditTasks(Blackhole blackhole) {
+//        queryAuditTasks(blackhole);
+//    }
+//
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+//    @Benchmark
+//    public void averageTimeQueryVariableLog(Blackhole blackhole) {
+//        queryVariableLog(blackhole);
+//    }
+//
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+//    @Benchmark
+//    public void averageTimeQueryNodeLog(Blackhole blackhole) {
+//        queryNodeLog(blackhole);
+//    }
+//
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+//    @Benchmark
+//    public void averageTimeQueryProcessInstanceLog(Blackhole blackhole) {
+//        queryProcessInstanceLog(blackhole);
+//    }
+//
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+//    @Benchmark
+//    public void averageTimeQueryTaskEvents(Blackhole blackhole) {
+//        queryTaskEvents(blackhole);
+//    }
 
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
