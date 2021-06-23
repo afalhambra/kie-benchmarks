@@ -95,7 +95,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
         statuses.add(Status.Reserved);
         //List<TaskSummary> tasks = internalTaskService.getTasksAssignedAsPotentialOwnerByStatus("perfUser", statuses, "en-UK");
         //List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwnerByStatus("perfUser", statuses, new QueryFilter());
-        List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwner("perfUser", new QueryFilter(0,250000));
+        List<TaskSummary> tasks = runtimeDataService.getTasksAssignedAsPotentialOwner("perfUser", new QueryFilter(0,500000));
         log.debug("#{} tasks assigned to 'perfUser'", tasks.size());
         Predicate<TaskSummary> filterOutputTaskVars = task -> filterByTaskVarName(task) && filterByOutputTaskVarName(task);
         int totalOutputTasks = (int)tasks.parallelStream()
@@ -163,7 +163,7 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
     protected static void assertProcessInstancesStatus(int status, boolean abortProcessInstances) {
         List<Long> pIds = new ArrayList<>();
 
-        Collection<ProcessInstanceDesc> processInstances = runtimeDataService.getProcessInstances(new QueryContext());
+        Collection<ProcessInstanceDesc> processInstances = runtimeDataService.getProcessInstances(new QueryContext(0,500000));
         for (ProcessInstanceDesc processInstance : processInstances) {
             if (processInstance.getState() != status) {
                 pIds.add(processInstance.getId());
@@ -173,16 +173,6 @@ public abstract class AbstractQueryProcessesAndTasksByVariablesBaseTest extends 
             if (abortProcessInstances) {
                 log.debug("aborting process instances {}", pIds);
                 processService.abortProcessInstances(pIds);
-                pIds.clear();
-                Collection<ProcessInstanceDesc> processInstances2 = runtimeDataService.getProcessInstances(new QueryContext());
-                for (ProcessInstanceDesc processInstance : processInstances2) {
-                    if (processInstance.getState() != status) {
-                        pIds.add(processInstance.getId());
-                    }
-                }
-                if (!pIds.isEmpty()) {
-                    throw new IllegalStateException("There are process instances not completed yet with IDs " + pIds);
-                }
             } else {
                 throw new IllegalStateException("There are process instances not completed yet with IDs " + pIds);
             }
