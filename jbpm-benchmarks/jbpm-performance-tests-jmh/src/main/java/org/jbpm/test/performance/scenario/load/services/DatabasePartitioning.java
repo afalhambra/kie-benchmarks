@@ -186,7 +186,7 @@ public class DatabasePartitioning extends AbstractQueryProcessesAndTasksByVariab
                 false,
                 true,
                 getTomorrow(),
-                null, processStorage.getProcessDefinitionId(), 32767);
+                null, processStorage.getProcessDefinitionId(), 100);
         if (results == null || results.getData().isEmpty() ||
                 results.getData().get("TaskAuditLogRemoved") == null ||
                 results.getData().get("TaskEventLogRemoved") == null ||
