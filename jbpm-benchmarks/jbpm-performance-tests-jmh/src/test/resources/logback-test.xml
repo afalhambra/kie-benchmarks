@@ -44,7 +44,7 @@
   </logger>
 
   <logger name="org.jbpm">
-    <level value="debug"/>
+    <level value="info"/>
   </logger>
 
   <logger name="org.jbpm.test.performance">
