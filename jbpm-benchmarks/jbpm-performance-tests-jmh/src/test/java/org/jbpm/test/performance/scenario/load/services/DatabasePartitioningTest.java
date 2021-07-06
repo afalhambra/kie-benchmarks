@@ -35,6 +35,7 @@ public class DatabasePartitioningTest extends AbstractQueryProcessesAndTasksByVa
 
         writeObjectToFile(processVariables, PROCESS_VARIABLES_FILENAME);
         writeObjectToFile(taskVariables, TASK_VARIABLES_FILENAME);
+        Thread.sleep(Long.MAX_VALUE);
     }
 
     @AfterClass
